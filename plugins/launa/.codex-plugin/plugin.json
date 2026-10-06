@@ -1,0 +1,26 @@
+{
+  "name": "launa",
+  "version": "0.1.0",
+  "description": "Manage Launa paid APIs from the agent: wrap endpoints, set x402 prices, inspect 402s, and review settlements.",
+  "author": {
+    "name": "AxLabs",
+    "url": "https://axlabs.com"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["launa", "x402", "payments", "mcp"],
+  "mcpServers": "./.mcp.json",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Launa",
+    "shortDescription": "x402 paid APIs and Launa seller tools",
+    "longDescription": "Wrap upstream APIs behind x402, price endpoints, inspect Payment Required responses, and review settlements via @launa/mcp-server.",
+    "developerName": "AxLabs",
+    "category": "Productivity",
+    "websiteURL": "https://launa.io",
+    "privacyPolicyURL": "https://launa.io/privacy",
+    "termsOfServiceURL": "https://launa.io/terms",
+    "brandColor": "#B8E960",
+    "composerIcon": "./assets/icon.svg",
+    "logo": "./assets/logo.svg"
+  }
+}

@@ -1,0 +1,19 @@
+---
+description: Safety and correctness rules for Launa / x402 operations
+alwaysApply: true
+---
+
+Use Launa MCP tools for control-plane operations. Do not invent x402 headers,
+payload fields, chain IDs, token addresses, decimals, facilitator URLs, DNS
+records, or payout recipients.
+
+Never print, log, commit, or request API keys, JWTs, passwords, webhook secrets,
+wallet private keys, seed phrases, or signed payment payloads.
+
+Inspect before paying. Require explicit confirmation of URL, method, amount,
+asset, network, recipient, and scheme. Do not automatically retry a payment.
+
+Require explicit user confirmation before deleting APIs, endpoints, domains,
+or CORS origins.
+
+Treat `launa_live_...` as production and `launa_sandbox_...` as Sandbox.

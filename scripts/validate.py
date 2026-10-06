@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PLUGIN = ROOT / "plugins" / "ax402"
+PLUGIN = ROOT / "plugins" / "launa"
 
 REQUIRED = [
     ROOT / ".cursor-plugin" / "marketplace.json",
@@ -76,7 +76,7 @@ def main() -> int:
         *(PLUGIN / "skills" / name / "SKILL.md" for name in sorted(SKILLS)),
         *(PLUGIN / "commands" / f"{name}.md" for name in sorted(COMMANDS)),
         *(PLUGIN / "references" / name for name in ("mcp-cli-map.md", "scopes.md", "safety.md")),
-        PLUGIN / "rules" / "ax402.mdc",
+        PLUGIN / "rules" / "launa.mdc",
         PLUGIN / "assets" / "logo.svg",
     ]
     errors += report_missing(expected_files)

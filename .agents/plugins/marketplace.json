@@ -1,14 +1,14 @@
 {
-  "name": "ax402-plugins",
+  "name": "launa-plugins",
   "interface": {
-    "displayName": "Ax402 Plugins"
+    "displayName": "Launa Plugins"
   },
   "plugins": [
     {
-      "name": "ax402",
+      "name": "launa",
       "source": {
         "source": "local",
-        "path": "./plugins/ax402"
+        "path": "./plugins/launa"
       },
       "policy": {
         "installation": "AVAILABLE",

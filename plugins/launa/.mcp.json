@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "launa": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@launa/mcp-server"],
+      "env": {
+        "LAUNA_API_KEY": "${LAUNA_API_KEY}",
+        "LAUNA_BASE_URL": "${LAUNA_BASE_URL:-https://api.launa.io}"
+      }
+    }
+  }
+}

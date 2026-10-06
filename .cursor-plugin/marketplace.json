@@ -1,23 +1,23 @@
 {
-  "name": "ax402-plugins",
+  "name": "launa-plugins",
   "owner": {
     "name": "AxLabs"
   },
   "metadata": {
-    "description": "AxLabs plugins for Ax402 / x402"
+    "description": "AxLabs plugins for Launa / x402"
   },
   "plugins": [
     {
-      "name": "ax402",
-      "source": "plugins/ax402",
-      "description": "Manage Ax402 paid APIs from the agent: wrap endpoints, set x402 prices, inspect 402s, and review settlements.",
+      "name": "launa",
+      "source": "plugins/launa",
+      "description": "Manage Launa paid APIs from the agent: wrap endpoints, set x402 prices, inspect 402s, and review settlements.",
       "version": "0.1.0",
       "author": { "name": "AxLabs" },
-      "homepage": "https://ax402.io/docs/agents",
-      "repository": "https://github.com/AxLabs/ax402-plugins",
+      "homepage": "https://launa.io/docs/agents",
+      "repository": "https://github.com/AxLabs/launa-plugins",
       "license": "Apache-2.0",
-      "keywords": ["ax402", "x402", "payments", "mcp"],
-      "logo": "plugins/ax402/assets/logo.svg",
+      "keywords": ["launa", "x402", "payments", "mcp"],
+      "logo": "plugins/launa/assets/logo.svg",
       "category": "payments"
     }
   ]

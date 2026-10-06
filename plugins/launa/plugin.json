@@ -1,0 +1,37 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "launa",
+  "version": "0.1.0",
+  "description": "Manage Launa paid APIs from the agent: wrap endpoints, set x402 prices, inspect 402s, and review settlements.",
+  "author": {
+    "name": "AxLabs",
+    "url": "https://axlabs.com"
+  },
+  "homepage": "https://launa.io/docs/agents",
+  "repository": "https://github.com/AxLabs/launa-plugins",
+  "license": "Apache-2.0",
+  "keywords": ["launa", "x402", "payments", "mcp", "api"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Launa",
+        "shortDescription": "x402 paid APIs and Launa seller tools",
+        "longDescription": "Wrap upstream APIs behind x402, price endpoints, inspect Payment Required responses, and review settlements via the Launa MCP server (@launa/mcp-server).",
+        "developerName": "AxLabs",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://launa.io",
+        "privacyPolicyURL": "https://launa.io/privacy",
+        "termsOfServiceURL": "https://launa.io/terms",
+        "defaultPrompt": [
+          "List my Launa APIs and show which endpoints are priced.",
+          "Inspect this 402 URL and tell me the payment requirements.",
+          "Create an Launa API named Echo wrapping https://httpbin.org with slug echo."
+        ],
+        "brandColor": "#B8E960",
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/logo.svg"
+      }
+    }
+  }
+}
