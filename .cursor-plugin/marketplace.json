@@ -11,7 +11,7 @@
       "name": "launa",
       "source": "plugins/launa",
       "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen test or live environment.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "author": {
         "name": "AxLabs"
       },

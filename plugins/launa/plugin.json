@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "launa",
-  "version": "0.1.1",
-  "description": "Manage Launa paid APIs from the agent: wrap endpoints, set x402 prices, inspect 402s, and review settlements.",
+  "version": "0.1.2",
+  "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen test or live environment.",
   "author": {
     "name": "AxLabs",
     "url": "https://axlabs.com"
@@ -21,8 +21,8 @@
     "com.openai": {
       "interface": {
         "displayName": "Launa",
-        "shortDescription": "Paid APIs for agents",
-        "longDescription": "Connect APIs to Launa, configure endpoint pricing and discovery, inspect payment requirements, purchase API access with explicit user authorization, and review settlements. Buyer requests use x402 and a user-configured signer. Launa provides API commerce tooling; no standalone wallet or arbitrary-address transfer tool is exposed.",
+        "shortDescription": "Your APIs, in your AI tools",
+        "longDescription": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen test or live environment. Connect with browser OAuth; no API key to paste. Review permissions before granting access.",
         "developerName": "AxLabs",
         "category": "Productivity",
         "capabilities": [
@@ -34,7 +34,7 @@
         "termsOfServiceURL": "https://launa.io/terms",
         "defaultPrompt": [
           "List my Launa APIs and show which endpoints are priced.",
-          "Inspect this 402 URL and tell me the payment requirements.",
+          "Show my API usage and income for the last seven days.",
           "Create a Launa API named Echo wrapping https://httpbin.org with slug echo."
         ],
         "brandColor": "#0E1301",

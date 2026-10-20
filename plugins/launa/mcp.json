@@ -2,9 +2,18 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
     "launa": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@launaio/mcp-server@0.0.7"]
+      "type": "streamable-http",
+      "url": "https://mcp.launa.io/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "dcr"
+            }
+          }
+        }
+      }
     }
   }
 }

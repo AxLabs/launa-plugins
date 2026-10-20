@@ -1,6 +1,6 @@
 # Control-plane scopes
 
-Hosted Cursor access uses OAuth consent. Its selected scopes are enforced by a
+Hosted plugin access uses OAuth consent. Its selected scopes are enforced by a
 server-held API key; the user does not paste that key into the plugin. Its default
 permissions cover developer configuration and reporting, excluding billing
 mutations and payouts. The table below also applies to explicit local API keys.

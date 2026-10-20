@@ -11,8 +11,8 @@
     {
       "name": "launa",
       "source": "./plugins/launa",
-      "description": "Manage Launa paid APIs from the agent: wrap endpoints, set x402 prices, inspect 402s, and review settlements.",
-      "version": "0.1.1",
+      "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen test or live environment.",
+      "version": "0.1.2",
       "author": {
         "name": "AxLabs",
         "url": "https://axlabs.com"

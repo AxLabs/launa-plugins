@@ -8,8 +8,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = ROOT / "plugins" / "launa"
-PLUGIN_VERSION = "0.1.1"
-MCP_PACKAGE = "@launaio/mcp-server@0.0.7"
+PLUGIN_VERSION = "0.1.2"
+MCP_URL = "https://mcp.launa.io/mcp"
 MCP_CONFIGS = {
     ROOT / ".mcp.json",
     PLUGIN / "mcp.json",
@@ -39,12 +39,11 @@ SKILLS = {
     "discovery",
     "custom-domain",
     "cors",
-    "inspect-pay",
     "sandbox",
     "analytics",
 }
 
-COMMANDS = {"wrap", "price", "discover", "domain", "inspect", "cors"}
+COMMANDS = {"wrap", "price", "discover", "domain", "cors"}
 
 
 def manifest_errors(path: Path, data: dict) -> list[str]:
@@ -55,8 +54,10 @@ def manifest_errors(path: Path, data: dict) -> list[str]:
         errors.append("plugin Website/homepage must be https://launa.io")
     if path in MCP_CONFIGS:
         server = data.get("mcpServers", {}).get("launa", {})
-        if server.get("command") != "npx" or server.get("args") != ["-y", MCP_PACKAGE]:
-            errors.append(f"MCP launch must be npx -y {MCP_PACKAGE}")
+        if server.get("url") != MCP_URL or server.get("type") not in {"http", "streamable-http"}:
+            errors.append("MCP must use hosted Streamable HTTP")
+        if any(key in server for key in ("command", "args", "env", "headers")):
+            errors.append("Hosted MCP must not ship local launch settings or credentials")
     if path.parent.name in {".cursor-plugin", ".claude-plugin"} and path.name == "marketplace.json":
         entries = data.get("plugins", [])
         if not entries or any(entry.get("version") != PLUGIN_VERSION for entry in entries):
@@ -143,23 +144,19 @@ def validate_listing() -> int:
     return len(failures)
 
 
-def validate_claude_config() -> int:
-    manifest = json.loads((PLUGIN / ".claude-plugin/plugin.json").read_text())
-    options = manifest["userConfig"]
-    env = manifest["mcpServers"]["launa"]["env"]
-    errors = 0
-    if set(options) != set(env):
-        print("Claude config options and MCP environment keys must match", file=sys.stderr)
-        errors += 1
-    for key in ("LAUNA_API_KEY", "LAUNA_EVM_PRIVATE_KEY", "HEDERA_PRIVATE_KEY"):
-        if not options.get(key, {}).get("sensitive"):
-            print(f"Claude {key} must use sensitive userConfig", file=sys.stderr)
-            errors += 1
-    for key, value in env.items():
-        if key not in options or value != "${user_config." + key + "}":
-            print(f"Claude {key} must reference declared userConfig", file=sys.stderr)
-            errors += 1
-    return errors
+def validate_oauth_config() -> int:
+    claude = json.loads((PLUGIN / ".claude-plugin/plugin.json").read_text())
+    portable = json.loads((PLUGIN / "mcp.json").read_text())
+    checks = {
+        "Claude must use browser OAuth without API-key onboarding": "userConfig" not in claude,
+        "OpenAI portable MCP must declare OAuth DCR": portable["mcpServers"]["launa"].get("extensions", {}).get("com.openai", {}).get("auth") == {"type": "oauth", "client": {"mode": "dcr"}},
+        "Hosted bundle must contain only developer skills": {x.name for x in (PLUGIN / "skills").iterdir() if (x / "SKILL.md").is_file()} == SKILLS,
+        "Hosted bundle must contain only developer commands": {x.stem for x in (PLUGIN / "commands").glob("*.md")} == COMMANDS,
+    }
+    for message, passed in checks.items():
+        if not passed:
+            print(message, file=sys.stderr)
+    return sum(not passed for passed in checks.values())
 
 
 def main() -> int:
@@ -181,7 +178,7 @@ def main() -> int:
     if errors:
         print(f"{errors} error(s)", file=sys.stderr)
         return 1
-    errors += validate_listing() + validate_claude_config()
+    errors += validate_listing() + validate_oauth_config()
     if errors:
         print(f"{errors} listing/configuration error(s)", file=sys.stderr)
         return 1

@@ -1,79 +1,76 @@
 # launa-plugins
 
-Installable agent plugins for [Launa](https://launa.io). One plugin directory is loaded by Cursor, Grok Build, Claude Code, and Codex / ChatGPT desktop.
+Developer plugins for [Launa](https://launa.io): manage APIs, endpoint pricing,
+domains, discovery, analytics, and settlements from your AI tool.
 
-Cursor is configured for the hosted developer MCP with OAuth; its deployment is pending. Other clients use the published npm package [`@launaio/mcp-server`](https://www.npmjs.com/package/@launaio/mcp-server) (stdio). See [hosted rollout](docs/hosted-mcp.md). This repo is packaging + marketplace indexes, not a fork of the server.
+All four client formats use the hosted MCP with **OAuth browser sign-in**.
+No API key, local Node.js runtime, or wallet is needed. Review permissions and
+choose Test or Live mode before granting access. The hosted server exposes the
+same 42 control-plane tools as the local server.
 
-The local manifests in plugin `0.1.1` launch `@launaio/mcp-server@0.0.7`, which depends on
-`@launaio/sdk@0.0.7`. The matching CLI is `@launaio/cli@0.0.7`.
-Node.js 18+ and npm are required for local stdio. Its four launch configurations
-pin the same MCP release; Cursor uses the separately deployed hosted service.
+**Unreleased:** production source targets `https://mcp.launa.io/mcp`. Staging is
+available at `https://mcp.staging.launa.io/mcp`; production deployment and native
+client acceptance checks are still release gates. Nothing has been published to
+marketplaces. See [hosted rollout](docs/hosted-mcp.md) and [submission](SUBMIT.md).
 
-```
-plugins/launa/          portable plugin (Agent Plugins 1.0 + client shims)
-.cursor-plugin/         Cursor marketplace index
-.claude-plugin/         Claude marketplace index
-.grok-plugin/           Grok marketplace index
-.agents/plugins/        ChatGPT / Codex marketplace index
-```
+## Install from source
 
-## Install
+| Client | Plugin definition | Sign-in |
+| --- | --- | --- |
+| Cursor | `.cursor-plugin/plugin.json` | Tools & MCP → connect Launa |
+| Claude Code | `.claude-plugin/plugin.json` | `/mcp` → authenticate Launa |
+| Grok Build | `.grok-plugin/plugin.json` + `.mcp.json` | `/mcps` → Launa → `i` |
+| Codex / ChatGPT desktop | `plugin.json` + `mcp.json`; `.codex-plugin/` fallback | Authenticate the plugin in the host |
 
-For local stdio clients, set `LAUNA_API_KEY` from the [Launa dashboard](https://launa.io) first. Cursor uses browser OAuth sign-in after hosted deployment.
+Cursor uses public client `launa-cursor`. The other clients discover the OAuth
+registration endpoint. The portable OpenAI manifest explicitly declares OAuth
+with dynamic client registration. Client IDs are public; no client secret is
+shipped. Browser consent is required for every new grant.
 
-**Cursor** — submit/install from this repo, or locally:
-
-```bash
-mkdir -p ~/.cursor/plugins/local/launa
-cp -R /path/to/launa-plugins/plugins/launa/. ~/.cursor/plugins/local/launa/
-```
-
-After deploying the hosted service and consent page, connect the Launa MCP in Cursor and complete browser sign-in. Choose Test or Live on the consent screen. Do not install this source configuration against an undeployed endpoint. Official listing: [cursor.com/marketplace/publish](https://cursor.com/marketplace/publish) (see [SUBMIT.md](SUBMIT.md)).
-
-**Grok Build** — add this repo as a marketplace, then install:
+For local testing, build an environment-specific copy outside the repository:
 
 ```bash
-grok plugin marketplace add AxLabs/launa-plugins
-grok plugin install launa --trust
+python3 scripts/prepare-staging.py /tmp/launa-plugin-staging
 ```
 
-**Claude Code**
+Load that directory in your client. For Cursor, copy its contents into
+`~/.cursor/plugins/local/launa/` and reload the plugin. The source generator
+changes every MCP manifest to staging together; Website remains `https://launa.io`.
+Use the `staging` branch if adding this repository as a marketplace for testing;
+the default branch may contain older packaging.
+
+Once production is deployed and release authorized, marketplace installation:
 
 ```bash
 claude plugin marketplace add AxLabs/launa-plugins
 claude plugin install launa@launa-plugins
+
+grok plugin marketplace add AxLabs/launa-plugins
+grok plugin install launa --trust
 ```
 
-**Codex / ChatGPT desktop** — add this repo (`codex plugin marketplace add AxLabs/launa-plugins`) or point `.agents/plugins/marketplace.json` at `./plugins/launa`. Public OpenAI directory submission has a hosted MCP route and a desktop-only local route for approved partners. This package uses local stdio; see [SUBMIT.md](SUBMIT.md) for eligibility and packaging requirements.
+Cursor and OpenAI directory submission instructions are in [SUBMIT.md](SUBMIT.md).
 
-**cursor.directory** — repo-root `.mcp.json` is for auto-detect. Submit at [cursor.directory/plugins/new](https://cursor.directory/plugins/new).
+## Workflows and access
 
-## Configure local stdio
+Eight skills cover setup, API wrapping, endpoint pricing, discovery, custom
+domains, CORS, Test mode, and analytics. Five commands provide `/wrap`, `/price`,
+`/discover`, `/domain`, and `/cors`.
 
-| Variable | Required | Purpose |
-|----------|----------|---------|
-| `LAUNA_API_KEY` | Yes | `launa_live_...` or `launa_sandbox_...` |
-| `LAUNA_BASE_URL` | No | Default `https://api.launa.io` |
-| `LAUNA_ENVIRONMENT` | No | `development` for Sandbox / Test mode |
+Access expires after 30 days. Revoke the named `MCP: <client> (...)` key in the
+selected environment's API key settings to stop backend access. Reconnect to
+change environments. Never put credentials in prompts, manifests, or Git.
 
-Signing keys for `launa_pay_url` stay in the user's MCP host environment or
-Claude's secure plugin configuration. See the
-[plugin configuration and data flow](plugins/launa/README.md).
-The optional discovery checker requires Node.js 20+.
+## Advanced local server
 
-## One plugin, several manifests
+The local `@launaio/mcp-server@0.0.7` remains available with a scoped API key.
+Use `examples/cursor-local.mcp.json` explicitly; it is a separate connection.
+The local server also exposes two buyer tools that are not included in hosted
+OAuth. Their legacy instructions are retained under `examples/local/` and are
+not loaded by the developer plugins.
 
-Control-plane skills and commands are shared. Cursor selects the developer workflows and hosted OAuth; local manifests also expose buyer inspection/payment:
-
-| File | Who |
-|------|-----|
-| `plugin.json` + `mcp.json` | Agent Plugins 1.0 (Cursor, Codex, others) |
-| `.cursor-plugin/plugin.json` | Cursor hosted OAuth config |
-| `.grok-plugin/plugin.json` + `.mcp.json` | Grok Build |
-| `.claude-plugin/plugin.json` + `.mcp.json` | Claude (with an inline credential override) |
-| `.codex-plugin/plugin.json` | Codex compatibility fallback |
-
-Portable `mcp.json` does not embed API keys (Agent Plugins leaves unknown `${VAR}` placeholders literal). Grok configs use environment substitution; Cursor uses its inline hosted OAuth definition; Claude uses its declared secure `userConfig` values.
+The optional discovery checker uses `@agentcash/discovery@1.7.5` and needs Node.js
+20+. Connecting to hosted MCP does not require it.
 
 ## Validate
 
@@ -81,13 +78,7 @@ Portable `mcp.json` does not embed API keys (Agent Plugins leaves unknown `${VAR
 python3 scripts/validate.py
 ```
 
-The validator checks manifest and marketplace versions, required files, and
-the MCP package/command in four local launch configurations plus Cursor OAuth
-URL, client ID, scopes, and developer-only workflows. When upgrading the
-published MCP package, update all four local launch configurations, setup and CLI
-references, and `MCP_PACKAGE` in `scripts/validate.py`; verify the published
-tool schemas against the skills before bumping the plugin release.
+Checks all client formats, matching versions, hosted URLs, OAuth metadata, icons,
+required workflows, and absence of credential-based onboarding.
 
-## License
-
-Apache-2.0. MCP server: [AxLabs/launa-sdks](https://github.com/AxLabs/launa-sdks) (`tools/mcp-server`).
+Apache-2.0. Server implementation: [AxLabs/launa-sdks](https://github.com/AxLabs/launa-sdks/tree/main/tools/mcp-server).

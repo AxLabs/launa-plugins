@@ -8,7 +8,7 @@ description: >
 
 # Sandbox
 
-For the hosted Cursor connection, select **Test mode** during OAuth consent.
+For the hosted connection, select **Test mode** during OAuth consent.
 The grant fixes its environment; reconnect to change it. Environment variables
 and local wallet configuration do not change a hosted connection. Do not set up
 a wallet for developer control-plane operations.
@@ -32,17 +32,4 @@ into mutations.
 
 Sandbox endpoint defaults support `exact` only, not `batch-settlement`.
 
-## Funded test wallet (local buyer workflow only)
-
-Sandbox wallet retrieval is JWT-only and intentionally not exposed over MCP:
-
-```bash
-export LAUNA_JWT="$(launa auth login --email ... --password ...)"
-launa --sandbox sandbox-wallet get --json --wait
-```
-
-The JSON output contains a private key. The user must run this locally and
-place it in `LAUNA_EVM_PRIVATE_KEY`; never request or display it in chat.
-
-Fork state is ephemeral and can be wiped by restarts. Do not treat Sandbox
-transactions or balances as production state.
+Fork state is ephemeral. Do not treat Test mode as production state.

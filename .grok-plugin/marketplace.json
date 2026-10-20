@@ -7,15 +7,25 @@
   "plugins": [
     {
       "name": "launa",
-      "description": "Manage Launa paid APIs from the agent: wrap endpoints, set x402 prices, inspect 402s, and review settlements.",
+      "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen test or live environment.",
       "category": "development",
       "source": {
         "type": "local",
         "path": "./plugins/launa"
       },
       "homepage": "https://launa.io",
-      "keywords": ["launa", "x402", "payments", "mcp", "launa mcp"],
-      "domains": ["launa.io", "api.launa.io"]
+      "keywords": [
+        "launa",
+        "x402",
+        "payments",
+        "mcp",
+        "launa mcp"
+      ],
+      "domains": [
+        "launa.io",
+        "api.launa.io",
+        "mcp.launa.io"
+      ]
     }
   ]
 }

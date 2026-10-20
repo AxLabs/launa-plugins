@@ -1,7 +1,7 @@
 {
   "name": "launa",
-  "version": "0.1.1",
-  "description": "Manage Launa paid APIs from the agent: wrap endpoints, set x402 prices, inspect 402s, and review settlements.",
+  "version": "0.1.2",
+  "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen test or live environment.",
   "author": {
     "name": "AxLabs",
     "url": "https://axlabs.com"
@@ -15,58 +15,10 @@
     "payments",
     "mcp"
   ],
-  "userConfig": {
-    "LAUNA_API_KEY": {
-      "type": "string",
-      "title": "Launa API key",
-      "description": "Scoped seller API key. Leave empty for wallet-free inspection.",
-      "sensitive": true,
-      "default": ""
-    },
-    "LAUNA_BASE_URL": {
-      "type": "string",
-      "title": "Launa API base URL",
-      "description": "Launa control-plane endpoint.",
-      "sensitive": false,
-      "default": "https://api.launa.io"
-    },
-    "LAUNA_EVM_PRIVATE_KEY": {
-      "type": "string",
-      "title": "EVM signing key (optional)",
-      "description": "Only for explicitly authorized paid API requests. Enter in secure plugin settings, never chat.",
-      "sensitive": true,
-      "default": ""
-    },
-    "HEDERA_ACCOUNT_ID": {
-      "type": "string",
-      "title": "Hedera account (optional)",
-      "description": "Account used only for authorized paid API requests.",
-      "sensitive": false,
-      "default": ""
-    },
-    "HEDERA_PRIVATE_KEY": {
-      "type": "string",
-      "title": "Hedera signing key (optional)",
-      "description": "Only for explicitly authorized paid API requests. Enter in secure plugin settings, never chat.",
-      "sensitive": true,
-      "default": ""
-    }
-  },
   "mcpServers": {
     "launa": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "-y",
-        "@launaio/mcp-server@0.0.7"
-      ],
-      "env": {
-        "LAUNA_API_KEY": "${user_config.LAUNA_API_KEY}",
-        "LAUNA_BASE_URL": "${user_config.LAUNA_BASE_URL}",
-        "LAUNA_EVM_PRIVATE_KEY": "${user_config.LAUNA_EVM_PRIVATE_KEY}",
-        "HEDERA_ACCOUNT_ID": "${user_config.HEDERA_ACCOUNT_ID}",
-        "HEDERA_PRIVATE_KEY": "${user_config.HEDERA_PRIVATE_KEY}"
-      }
+      "type": "http",
+      "url": "https://mcp.launa.io/mcp"
     }
   }
 }

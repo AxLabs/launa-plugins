@@ -1,5 +1,14 @@
 # Launa 0.1.1 reviewer preparation
 
+> **Current rollout supersedes the local-runtime instructions below:** all client
+> manifests now use hosted OAuth and 42 developer control-plane tools. Buyer
+> inspection/payment skills are excluded from every default plugin. The older
+> local submission research below is historical, not the current configuration
+> or evidence of native OAuth acceptance. Use [the rollout guide](https://github.com/AxLabs/launa-plugins/blob/staging/docs/hosted-mcp.md)
+> and regenerate reviewer evidence before any submission. Production deployment,
+> each native client sign-in, and marketplace publication remain release gates.
+
+
 > Cursor configuration now targets hosted developer MCP with OAuth (42 control-plane
 > tools, no buyer tools). Staging service/consent deployment is verified; native
 > account sign-in and production deployment remain pending.

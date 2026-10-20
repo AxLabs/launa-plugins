@@ -1,5 +1,14 @@
 # Marketplace publication guide
 
+> **Current rollout supersedes the local-runtime instructions below:** all client
+> manifests now use hosted OAuth and 42 developer control-plane tools. Buyer
+> inspection/payment skills are excluded from every default plugin. The older
+> local submission research below is historical, not the current configuration
+> or evidence of native OAuth acceptance. Use [the rollout guide](https://github.com/AxLabs/launa-plugins/blob/staging/docs/hosted-mcp.md)
+> and regenerate reviewer evidence before any submission. Production deployment,
+> each native client sign-in, and marketplace publication remain release gates.
+
+
 Requirements checked against official sources on 2026-10-20. This repository
 contains one Launa plugin (`plugins/launa`) with manifests for several clients.
 A repository marketplace and a curated public listing are separate channels.

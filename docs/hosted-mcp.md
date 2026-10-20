@@ -1,4 +1,4 @@
-# Cursor hosted OAuth rollout
+# Hosted OAuth rollout — all plugins
 
 The Cursor manifest now targets `https://mcp.launa.io/mcp`, using the static public
 OAuth client `launa-cursor`. It no longer requests an API key in plugin variables.
@@ -30,8 +30,10 @@ The plugin requests control-plane read/write scopes and analytics/billing/income
 reads. The consent screen selects test or live mode. It does not grant wallet,
 payment, payout, or billing-mutation authority. Hosted and local share the same
 42 control-plane tool definitions; local stdio retains its two additional buyer
-tools. Other client manifests remain local until their OAuth callbacks and native
-onboarding have been explicitly registered and tested.
+tools. All other client manifests now use hosted OAuth with dynamic client registration.
+Native onboarding remains a release verification step for every client.
+Registration permits loopback redirects and reviewed web callbacks only; it does
+not fetch arbitrary metadata URLs. See the server HOSTED.md for the policy.
 
 Before release:
 
@@ -60,3 +62,6 @@ locally and set its Cursor manifest's `mcpServers.launa.url` to
 `https://staging.launa.io`; this endpoint uses the staging control plane. The
 Website link remains `https://launa.io`. Staging deployment does not publish the
 plugin to any marketplace.
+
+Use `python3 scripts/prepare-staging.py /tmp/launa-plugin-staging` to generate all
+client manifests against staging together. Public directory submission remains pending.
