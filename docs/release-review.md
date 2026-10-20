@@ -1,11 +1,12 @@
 # Launa 0.1.1 reviewer preparation
 
 > Cursor configuration now targets hosted developer MCP with OAuth (42 control-plane
-> tools, no buyer tools). Its service/consent deployment and native OAuth smoke test
-> are pending. The local-runtime buyer scenarios below apply to other client manifests
+> tools, no buyer tools). Staging service/consent deployment is verified; native
+> account sign-in and production deployment remain pending.
+> The local-runtime buyer scenarios below apply to other client manifests
 > and an explicit local fallback. See [hosted rollout](hosted-mcp.md).
 
-Status: local preparation only. Nothing has been submitted or published.
+Status: staging testing. Nothing has been submitted or published to marketplaces.
 These are proposed review cases, not a record of completed marketplace tests.
 
 ## Listing copy

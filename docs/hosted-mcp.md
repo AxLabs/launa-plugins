@@ -3,8 +3,16 @@
 The Cursor manifest now targets `https://mcp.launa.io/mcp`, using the static public
 OAuth client `launa-cursor`. It no longer requests an API key in plugin variables.
 The square icon remains the same improved asset for the listing and plugin page.
-This is **unreleased source**: do not distribute it until the service and seller
-consent page have been deployed and the complete native connection tested.
+This is **unreleased source**. The production endpoint is not deployed; do not
+distribute it until production service/consent deployment and the complete native
+connection have been tested.
+
+Staging was deployed on 2026-10-20 at `https://mcp.staging.launa.io/mcp`, with
+consent on `https://staging.launa.io`. HTTPS, OAuth discovery, Mongo-backed
+authorization requests, the frontend bridge, invalid-session rejection, callback
+validation, and consent origin checks passed. The existing staging login page
+and backend health checks also passed. Interactive Cursor account sign-in and
+authenticated tool operations remain to be verified by the tester.
 
 Implementation lives in `launa-sdks/tools/mcp-server`; its `HOSTED.md` contains
 runtime configuration and the deployment procedure. The existing seller frontend
@@ -27,8 +35,8 @@ onboarding have been explicitly registered and tested.
 
 Before release:
 
-1. Deploy the hosted runtime and seller consent routes to staging; configure the
-   matching secret and origins. Change the staging plugin URL to that test host.
+1. Keep staging's hosted runtime, consent routes, dedicated database, secret, and
+   origins configured together. Use the staging URL for local plugin testing.
 2. Connect in Cursor, use existing Launa login/MFA/passkeys, deny once, then allow
    Test access. Check all 42 tools and exercise test API/endpoint CRUD.
 3. Confirm a second account and a separately authorized live connection cannot
@@ -41,8 +49,8 @@ Before release:
    authorization to publish or submit. Keep earlier local-runtime evidence labeled
    as local; it is not proof of hosted OAuth onboarding.
 
-The installed local Cursor copy is intentionally not changed to an undeployed
-endpoint. To keep using local stdio, use `examples/cursor-local.mcp.json` explicitly
+The installed local Cursor copy now points to the deployed staging endpoint.
+To keep using local stdio, use `examples/cursor-local.mcp.json` explicitly
 and supply a scoped key through Cursor's environment substitution. Do not put
 credentials in chat or Git. OAuth sign-in does not require Node/npm locally.
 
