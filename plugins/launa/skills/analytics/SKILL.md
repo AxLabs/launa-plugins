@@ -30,6 +30,7 @@ For pagination, preserve `limit`, `offset`, API id, network, and date range in
 the summary. Do not present atomic token amounts as decimal amounts unless
 token decimals are known from returned metadata.
 
-Creating/cancelling payouts, facilitator event logs, billing invoices, and
-exchange-rate lookup are CLI-only in this plugin. Do not synthesize MCP calls
-for them.
+Facilitator event logs, billing invoices, and exchange-rate lookup are
+CLI-only in this plugin. Creating/cancelling payouts is not exposed by the
+published MCP server or CLI; only listing payout requests is available.
+Do not synthesize calls for unsupported operations.

@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "launa-local": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@launaio/mcp-server@0.0.7"
+      ],
+      "env": {
+        "LAUNA_API_KEY": "${env:LAUNA_API_KEY}",
+        "LAUNA_BASE_URL": "https://api.launa.io"
+      }
+    }
+  }
+}

@@ -7,6 +7,12 @@ description: >
 
 # Inspect and pay
 
+These tools are available only in the local stdio runtime. Cursor's hosted
+developer connection does not expose buyer inspection or payments. If the tools
+are absent, explain that limitation; do not request wallet credentials or switch
+authentication modes automatically.
+
+
 Buyer calls target gateway hostnames, not the Launa control-plane API.
 
 ## Inspect first
@@ -29,7 +35,8 @@ Call `launa_pay_url` only when:
 1. The user explicitly asks to pay.
 2. The user confirms the selected amount, asset, network, recipient, URL,
    method, and scheme.
-3. Wallet credentials are already present in the MCP host environment.
+3. Signing credentials are already configured securely for the MCP process
+   (Claude plugin settings or the other client's host environment).
 
 Never ask the user to paste a private key into chat. Never print keys. Do not
 blindly retry a failed payment because a retry can create another authorization.

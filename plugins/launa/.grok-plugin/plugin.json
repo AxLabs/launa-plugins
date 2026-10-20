@@ -1,6 +1,6 @@
 {
   "name": "launa",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Manage Launa paid APIs from the agent: wrap endpoints, set x402 prices, inspect 402s, and review settlements.",
   "homepage": "https://launa.io",
   "repository": "https://github.com/AxLabs/launa-plugins",

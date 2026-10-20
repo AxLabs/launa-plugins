@@ -30,11 +30,11 @@ Disabled and ephemeral endpoints are omitted from discovery.
 
 ## Validate
 
-The AgentCash checker is CLI-only:
+The AgentCash checker is CLI-only and requires Node.js 20+:
 
 ```bash
-npx -y @agentcash/discovery@latest check "https://gateway.example/"
-npx -y @agentcash/discovery@latest discover "https://gateway.example/"
+npx -y @agentcash/discovery@1.7.5 check "https://gateway.example/"
+npx -y @agentcash/discovery@1.7.5 discover "https://gateway.example/"
 ```
 
 Run it only against a URL returned by `launa_discovery_urls`. Report validation

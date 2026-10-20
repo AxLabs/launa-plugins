@@ -1,40 +1,56 @@
 {
   "name": "launa",
-  "version": "0.1.0",
-  "description": "Manage Launa paid APIs from the agent: wrap endpoints, set x402 prices, inspect 402s, and review settlements.",
+  "version": "0.1.1",
+  "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen test or live environment.",
   "author": {
     "name": "AxLabs"
   },
-  "homepage": "https://launa.io/docs/agents",
+  "homepage": "https://launa.io",
   "repository": "https://github.com/AxLabs/launa-plugins",
   "license": "Apache-2.0",
-  "keywords": ["launa", "x402", "payments", "mcp"],
-  "logo": "assets/logo.svg",
+  "keywords": [
+    "launa",
+    "x402",
+    "payments",
+    "mcp"
+  ],
+  "logo": "assets/icon.svg",
   "mcpServers": {
     "launa": {
-      "command": "npx",
-      "args": ["-y", "@launa/mcp-server"],
-      "env": {
-        "LAUNA_API_KEY": "${LAUNA_API_KEY}",
-        "LAUNA_BASE_URL": "${LAUNA_BASE_URL}"
+      "url": "https://mcp.launa.io/mcp",
+      "auth": {
+        "CLIENT_ID": "launa-cursor",
+        "scopes": [
+          "apis:read",
+          "apis:write",
+          "endpoints:read",
+          "endpoints:write",
+          "domains:read",
+          "domains:write",
+          "stats:read",
+          "settlements:read",
+          "openapi:read",
+          "billing:read",
+          "income:read"
+        ]
       }
     }
   },
-  "variables": {
-    "type": "object",
-    "properties": {
-      "LAUNA_API_KEY": {
-        "type": "string",
-        "title": "Launa API key",
-        "description": "Scoped key from the Launa dashboard (launa_live_... or launa_sandbox_...)."
-      },
-      "LAUNA_BASE_URL": {
-        "type": "string",
-        "title": "Launa API base URL",
-        "description": "Control-plane base URL.",
-        "default": "https://api.launa.io"
-      }
-    },
-    "required": ["LAUNA_API_KEY"]
-  }
+  "skills": [
+    "skills/setup",
+    "skills/wrap-api",
+    "skills/price-endpoints",
+    "skills/discovery",
+    "skills/custom-domain",
+    "skills/cors",
+    "skills/sandbox",
+    "skills/analytics"
+  ],
+  "commands": [
+    "commands/wrap.md",
+    "commands/price.md",
+    "commands/discover.md",
+    "commands/domain.md",
+    "commands/cors.md"
+  ]
 }

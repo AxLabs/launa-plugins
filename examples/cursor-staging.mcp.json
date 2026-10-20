@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "launa-staging": {
+      "url": "https://mcp.staging.launa.io/mcp",
+      "auth": {
+        "CLIENT_ID": "launa-cursor",
+        "scopes": [
+          "apis:read",
+          "apis:write",
+          "endpoints:read",
+          "endpoints:write",
+          "domains:read",
+          "domains:write",
+          "stats:read",
+          "settlements:read",
+          "openapi:read",
+          "billing:read",
+          "income:read"
+        ]
+      }
+    }
+  }
+}

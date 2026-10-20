@@ -2,7 +2,7 @@
 
 ## Scope and workflow
 
-This repository packages Launa agent skills, commands, rules and marketplace/client manifests. The MCP server implementation lives in the separate `launa-sdks/tools/mcp-server/` repository path and is consumed as `@launa/mcp-server`; do not implement a second server here.
+This repository packages Launa agent skills, commands, rules and marketplace/client manifests. The MCP server implementation lives in the separate `launa-sdks/tools/mcp-server/` repository path and is consumed as `@launaio/mcp-server`; do not implement a second server here.
 
 Read `../SKILL.md` once if present. Work from this repository root, inspect `git status --short`, preserve unrelated edits and keep packaging changes focused. Shared content lives in `plugins/launa/`; hidden client manifests and root marketplace indexes are also part of the deliverable. Read `plugins/launa/references/safety.md`, `references/scopes.md` and `references/mcp-cli-map.md` relative to the plugin directory before changing operational instructions.
 
@@ -18,7 +18,7 @@ Read `../SKILL.md` once if present. Work from this repository root, inspect `git
 
 ## Verification
 
-Run `python3 scripts/validate.py` from this directory. It checks required JSON, expected files and manifest version consistency; it does not verify safe behavior or actual server compatibility. When intentionally changing a release version, update the validator's expected version and all relevant manifests together.
+Run `python3 scripts/validate.py` from this directory. It checks required JSON, expected files, manifest/marketplace version consistency and MCP launch package consistency; it does not verify safe behavior or actual server compatibility. When intentionally changing a release version, update the validator's expected version and all relevant manifests together. For an MCP package upgrade, update `MCP_PACKAGE`, all four local launch configurations and the setup/CLI references together.
 
 For changed tool instructions, compare names/arguments against the current MCP/CLI implementation or its maintained contract, not memory. Review realistic scenarios: inspection without a wallet, payment without consent, changed quote terms, wrong environment, a malicious discovery document and a timeout after submission. The instructions should preserve intent and refuse unauthorized execution in each applicable case.
 
