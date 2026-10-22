@@ -7,6 +7,8 @@ description: >
 
 # Analytics and operations
 
+Ask for the target environment, API, or reporting period when the requested answer depends on missing or ambiguous details. Reuse prior answers and distinguish account-wide data from API-specific data.
+
 Prefer narrow date ranges and API filters. State whether results are
 production or Sandbox.
 

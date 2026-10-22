@@ -21,3 +21,10 @@ launa keys create --name agent --scopes apis:read,endpoints:read --json
 ```
 
 The key value is shown once. Never request, echo, log, or commit it.
+
+`sandbox:wallet` is a separate, sensitive permission outside the presets above.
+It allows preparing/funding and retrieving the account's Sandbox wallet, including
+its private key, through `launa_sandbox_wallet`. It cannot access Live wallets or
+reset a wallet. The AI client receives the key; review that permission at consent.
+Existing OAuth connections need to reconnect to grant it. API-key connections
+need an explicitly scoped Sandbox key. Do not silently widen an existing key.

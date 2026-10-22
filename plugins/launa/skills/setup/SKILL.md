@@ -7,6 +7,8 @@ description: >
 
 # Connect Launa
 
+Ask which account or environment the user intends when it is ambiguous. Reuse existing instructions and direct the user to the browser for credentials; never ask them to paste secrets.
+
 All plugin formats use hosted MCP at `https://mcp.launa.io/mcp`. Staging packages
 use `https://mcp.staging.launa.io/mcp` and sign in at `https://staging.launa.io`.
 The production endpoint is deployed; marketplace submission is separate.
@@ -31,5 +33,9 @@ expire: remove and re-add the connection if the client keeps a stale ID.
 
 The separate local runtime is an explicit advanced fallback, documented in the
 repository's examples. Do not automatically replace a hosted OAuth connection
-with local API-key authentication. Hosted tools cover 42 developer operations;
+with local API-key authentication. Hosted tools cover 43 developer operations;
 `launa_inspect_url` and `launa_pay_url` are not available here.
+
+The `sandbox:wallet` permission explicitly allows the AI to retrieve the prepared
+Sandbox wallet private key for fork-only testing. It is unavailable in Live.
+Reconnect older grants to add this permission; do not ask users to paste keys.

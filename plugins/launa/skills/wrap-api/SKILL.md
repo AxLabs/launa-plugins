@@ -16,7 +16,14 @@ Collect:
 
 - `name`, lowercase `slug`, and HTTPS `upstream_base_url`
 - payout recipient when the account uses `user_wallet`
-- optional webhook and discovery fields
+- optional webhook and discovery fields only when requested
+
+Ask for missing required inputs before creating anything; reuse supplied answers
+and authorized existing configuration. Never invent an upstream, Live recipient,
+or account choice. For Sandbox setup with no recipient, use
+`launa_sandbox_wallet` and its returned public address for the verified fork
+network. The prepared private key may be retrieved by that tool; never echo it.
+If the tool is unavailable or permission is missing, explain how to reconnect.
 
 Then:
 

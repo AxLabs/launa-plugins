@@ -6,9 +6,9 @@ domains, discovery, analytics, and settlements from your AI tool.
 All four client formats use the hosted MCP with **OAuth browser sign-in**.
 No API key, local Node.js runtime, or wallet is needed. Review permissions and
 choose Sandbox or Live before granting access. The hosted server exposes the
-same 42 control-plane tools as the local server.
+43 developer tools, including prepared Sandbox wallet access.
 
-**Marketplace release candidate 0.1.2:** production MCP is deployed at
+**Marketplace release candidate 0.1.3:** production MCP is deployed at
 `https://mcp.launa.io/mcp`, with sign-in and consent on `https://launa.io`.
 Native production client acceptance and marketplace review remain pending.
 Nothing has been submitted to marketplaces. Start with the
@@ -71,14 +71,16 @@ change environments. Never put credentials in prompts, manifests, or Git.
 
 ## Advanced local server
 
-The local `@launaio/mcp-server@0.0.7` remains available with a scoped API key.
+The published local `@launaio/mcp-server@0.0.7` remains available with a scoped API
+key. It predates `launa_sandbox_wallet`; use hosted MCP for that tool.
 Use `examples/cursor-local.mcp.json` explicitly; it is a separate connection.
 The local server also exposes two buyer tools that are not included in hosted
 OAuth. Their legacy instructions are retained under `examples/local/` and are
 not loaded by the developer plugins.
 
-The optional discovery checker uses `@agentcash/discovery@1.7.5` and needs Node.js
-20+. Connecting to hosted MCP does not require it.
+Discovery uses Launa tools and public discovery documents. Optional sandbox
+payment tests can use [saw](https://saw.axlabs.com/agents.md); it is not required
+for connecting, API configuration, or discovery.
 
 ## Validate
 
@@ -90,3 +92,9 @@ Checks all client formats, matching versions, hosted URLs, OAuth metadata, icons
 required workflows, and absence of credential-based onboarding.
 
 Apache-2.0. Server implementation: [AxLabs/launa-sdks](https://github.com/AxLabs/launa-sdks/tree/main/tools/mcp-server).
+
+The explicit `sandbox:wallet` permission adds `launa_sandbox_wallet`: it returns
+the prepared Sandbox wallet, including its private key, to the AI client for
+authorized fork-only testing. Live access and wallet reset are denied. Existing
+connections must reconnect to grant the permission. No buyer payment is implied;
+optional payment tests can use [saw](https://saw.axlabs.com/agents.md).

@@ -2,11 +2,13 @@
 name: discovery
 description: >
   Publish and validate Launa API discovery metadata. Use for gateway
-  openapi.json, /.well-known/x402.json, AgentCash discovery, guidance,
+  openapi.json, /.well-known/x402.json, discovery validation, guidance,
   contact email, OpenAPI version, or endpoint schemas.
 ---
 
 # API discovery
+
+Ask for the target API and any requested public metadata that is missing. Read existing configuration first, reuse supplied information, and do not invent contact details or schemas.
 
 Discovery documents are public, unpaid gateway routes generated from live API
 and endpoint configuration:
@@ -30,12 +32,9 @@ Disabled and ephemeral endpoints are omitted from discovery.
 
 ## Validate
 
-The AgentCash checker is CLI-only and requires Node.js 20+:
-
-```bash
-npx -y @agentcash/discovery@1.7.5 check "https://gateway.example/"
-npx -y @agentcash/discovery@1.7.5 discover "https://gateway.example/"
-```
-
-Run it only against a URL returned by `launa_discovery_urls`. Report validation
-failures without silently rewriting schemas or guidance.
+Fetch the exact public OpenAPI and x402 discovery URLs returned by
+`launa_discovery_urls`. Compare methods, paths, schemas, and payment terms with
+`launa_get_api` and `launa_list_endpoints`. No external checker or wallet is required.
+Report discrepancies without silently rewriting schemas or guidance. Ask for
+missing public contact details or guidance if requested; never substitute the
+account email or publish private information without the user's direction.

@@ -1,7 +1,7 @@
 # Launa developer plugin
 
 Connect your [Launa](https://launa.io) workspace to Cursor, Claude Code, Codex /
-ChatGPT desktop, or Grok Build. All formats use hosted OAuth with 42 developer
+ChatGPT desktop, or Grok Build. All formats use hosted OAuth with 43 developer
 control-plane tools.
 
 ## Connect
@@ -16,7 +16,7 @@ corresponding environment's API key settings to stop backend access. Remove the
 connection from your AI tool as well.
 
 Production uses `https://mcp.launa.io/mcp` and sign-in on `https://launa.io`.
-Version 0.1.2 is a marketplace release candidate; native production acceptance
+Version 0.1.3 is a marketplace release candidate; native production acceptance
 and store submission are pending. Sandbox on production is separate from the
 staging service. See the [Cursor test checklist](https://github.com/AxLabs/launa-plugins/blob/staging/docs/cursor-production-test.md).
 
@@ -33,8 +33,12 @@ OAuth. Never paste keys into a conversation or commit them to configuration.
 - Tools return account configuration and analytics to the AI client. Read the
   requested permissions: write access includes deletion and changing API payout
   destinations and webhooks. Review changes before approving them.
-- The optional discovery checker executes `@agentcash/discovery@1.7.5` and probes
-  the selected origin. It requires Node.js 20+ separately from the hosted connection.
+- With the explicit `sandbox:wallet` permission, `launa_sandbox_wallet` returns
+  your prepared Sandbox wallet **including its private key to the AI client**.
+  This is unavailable in Live. The key is for the dedicated fork only and must
+  not appear in chat, logs, command arguments, or committed files.
+- Optional sandbox payment tests may use [saw](https://saw.axlabs.com/agents.md).
+  No wallet CLI is required for API configuration or discovery.
 - No telemetry scripts or hooks are bundled. Service processing is covered by
   [privacy](https://launa.io/privacy) and [terms](https://launa.io/terms).
 

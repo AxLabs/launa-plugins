@@ -24,11 +24,12 @@ native loopback callbacks. No client secret is shipped. Consent binds each grant
 to Sandbox or Live. Production Sandbox uses the production account's sandbox
 resources, not the staging account/database.
 
-Hosted MCP exposes 42 developer control-plane tools. Permissions include API,
+Hosted MCP exposes 43 developer control-plane tools. Permissions include API,
 endpoint and domain configuration and analytics, billing, income and settlement
 reads. Configuration writes can change API payout destinations and webhooks;
 they do not authorize sending funds. Buyer inspection/payment tools are excluded.
-Local stdio retains two additional buyer tools as an explicit alternative.
+Local stdio retains buyer tools as an explicit alternative; published version
+0.0.7 predates the new Sandbox wallet tool.
 
 Clients without OAuth can use scoped API keys on the same hosted endpoint;
 see [setup](https://launa.io/ai#other-clients). Never commit credentials.
@@ -51,3 +52,9 @@ Before Cursor submission, complete the native production checklist, review the
 exact public release commit, and prepare [reviewer evidence](release-review.md).
 Other marketplaces require their own native client checks. Deployment alone
 does not mean the plugin is listed.
+
+The explicit `sandbox:wallet` permission adds `launa_sandbox_wallet`: it returns
+the prepared Sandbox wallet, including its private key, to the AI client for
+authorized fork-only testing. Live access and wallet reset are denied. Existing
+connections must reconnect to grant the permission. No buyer payment is implied;
+optional payment tests can use [saw](https://saw.axlabs.com/agents.md).

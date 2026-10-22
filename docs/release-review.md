@@ -1,4 +1,4 @@
-# Launa 0.1.2 reviewer preparation
+# Launa 0.1.3 reviewer preparation
 
 Status: production service deployed; native Cursor production acceptance and
 marketplace submission pending. These are proposed cases, not completed tests.
@@ -15,7 +15,7 @@ marketplace submission pending. These are proposed cases, not completed tests.
 
 Connect Launa to Cursor to manage APIs, endpoint pricing, domains, discovery,
 analytics and settlements. Sign in through your browser, review permissions,
-and choose Sandbox or Live. The hosted developer plugin includes 42
+and choose Sandbox or Live. The hosted developer plugin includes 43
 control-plane tools, eight skills and five commands. No local Node.js runtime
 or wallet is needed for the connection.
 
@@ -53,3 +53,9 @@ cookies, API keys, OAuth callback parameters and private customer data.
 Token expiry/replay, callback validation, scopes and storage concurrency belong
 to the runtime's regression tests. Native client and runtime tests provide
 different evidence; record both honestly.
+
+The explicit `sandbox:wallet` permission adds `launa_sandbox_wallet`: it returns
+the prepared Sandbox wallet, including its private key, to the AI client for
+authorized fork-only testing. Live access and wallet reset are denied. Existing
+connections must reconnect to grant the permission. No buyer payment is implied;
+optional payment tests can use [saw](https://saw.axlabs.com/agents.md).

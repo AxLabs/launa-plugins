@@ -1,6 +1,6 @@
 # Marketplace publication
 
-Release candidate: **Launa 0.1.2**. Production hosted MCP and consent are deployed.
+Release candidate: **Launa 0.1.3**. Production hosted MCP and consent are deployed.
 The public repository is Apache-2.0 licensed. Native production acceptance and
 marketplace submission remain pending. This candidate is on staging; main still
 contains the older local-server plugin until promotion.
@@ -10,7 +10,7 @@ contains the older local-server plugin until promotion.
 1. Run `python3 scripts/validate.py` and complete the
    [native production test](docs/cursor-production-test.md).
 2. Review the tested candidate, promote it to main, and record the full public
-   commit SHA. Confirm main contains version 0.1.2 and the production MCP URL.
+   commit SHA. Confirm main contains version 0.1.3 and the production MCP URL.
 3. Use the [reviewer pack](docs/release-review.md) for listing text, support,
    privacy and terms links, and sanitized test evidence. Prepare private
    reviewer access if requested; do not commit credentials.

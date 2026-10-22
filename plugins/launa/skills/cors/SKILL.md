@@ -8,6 +8,8 @@ description: >
 
 # CORS
 
+Ask for the API and exact browser origin when they are missing or ambiguous. Reuse details already supplied; never assume a localhost port or replace origins without the intended full list.
+
 1. Read current origins with `launa_get_cors`.
 2. Identify the exact browser origin: scheme, host, and port only.
 3. Use `launa_add_cors_origin` for one origin or `launa_set_cors` to replace

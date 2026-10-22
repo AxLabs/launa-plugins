@@ -8,6 +8,8 @@ description: >
 
 # Custom domains
 
+Ask for the target API and desired hostname/apex when missing or ambiguous. Reuse prior answers; do not choose a domain or change another API based on a guess.
+
 ## Add and verify
 
 1. Call `launa_domain_suggest` with the apex and optional prefix/path.

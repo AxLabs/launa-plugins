@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = ROOT / "plugins" / "launa"
-PLUGIN_VERSION = "0.1.2"
+PLUGIN_VERSION = "0.1.3"
 MCP_URL = "https://mcp.launa.io/mcp"
 MCP_CONFIGS = {
     ROOT / ".mcp.json",
@@ -106,7 +106,6 @@ def validate_listing() -> int:
     cursor = json.loads((PLUGIN / ".cursor-plugin" / "plugin.json").read_text())
     marketplace = json.loads((ROOT / ".cursor-plugin" / "marketplace.json").read_text())
     interface = portable["extensions"]["com.openai"]["interface"]
-    discovery = (PLUGIN / "skills/discovery/SKILL.md").read_text()
     checks = {
         "Cursor must use the square icon": cursor["logo"] == "assets/icon.svg",
         "Cursor marketplace must use the square icon":
@@ -127,7 +126,7 @@ def validate_listing() -> int:
             set(cursor["mcpServers"]["launa"]["auth"]["scopes"]) == {
                 "apis:read", "apis:write", "endpoints:read", "endpoints:write",
                 "domains:read", "domains:write", "stats:read", "settlements:read",
-                "openapi:read", "billing:read", "income:read"
+                "openapi:read", "billing:read", "income:read", "sandbox:wallet"
             },
         "OpenAI listing metadata differs between manifests": interface == fallback["interface"],
         "OpenAI subtitle must contain 1–30 characters": 0 < len(interface["shortDescription"]) <= 30,
@@ -135,8 +134,6 @@ def validate_listing() -> int:
         "OpenAI primary icon must use the square asset": interface["logo"] == "./assets/icon.svg",
         "OpenAI light-theme color must use brand ink": interface["brandColor"] == "#0E1301",
         "OpenAI dark-theme color must use brand lime": interface["brandColorDark"] == "#B8E961",
-        "discovery helper must use its reviewed pin":
-            "@agentcash/discovery@1.7.5" in discovery and "@latest" not in discovery,
     }
     failures = [message for message, passed in checks.items() if not passed]
     for message in failures:

@@ -11,6 +11,11 @@ description: >
 Read the API and existing routes with `launa_get_api` and
 `launa_list_endpoints` before mutating them.
 
+Ask for missing API/route selection, method, path, price and payment terms before
+writing. Discover supported networks/assets and decimals, but never interpret
+support as the user's choice. Do not apply a default price. Use prior answers or
+an unambiguous existing configuration; ask when multiple choices remain.
+
 ## Add or update
 
 - Use `launa_add_endpoint` for a new method + path.
@@ -32,7 +37,7 @@ Sandbox supports `exact` only. Do not select `batch-settlement` when
 
 1. Call `launa_parse_openapi` with YAML or JSON.
 2. Review operations and the suggested upstream with the user.
-3. Call `launa_import_openapi` with API id, spec, and default USDC price.
+3. Call `launa_import_openapi` with API id, spec, and user-approved default USDC price.
 4. List endpoints and report created/skipped operations.
 
 Import skips existing method + path keys.

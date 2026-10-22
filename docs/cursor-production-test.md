@@ -1,4 +1,4 @@
-# Cursor production acceptance — 0.1.2
+# Cursor production acceptance — 0.1.3
 
 Status: awaiting native Cursor testing. Record Cursor version, plugin version,
 source commit, date and pass/fail for each step. Do not record credentials or
@@ -8,7 +8,7 @@ OAuth callback query strings. This checklist does not submit or publish anything
 
 Use a real copy of `plugins/launa/`, including hidden files, at
 `~/.cursor/plugins/local/launa/`. Back up the old copy outside that directory.
-The installed `.cursor-plugin/plugin.json` must show version `0.1.2` and
+The installed `.cursor-plugin/plugin.json` must show version `0.1.3` and
 `mcpServers.launa.url` equal to `https://mcp.launa.io/mcp`.
 
 Run **Developer: Reload Window** from Cursor's command palette. Open the plugin
@@ -24,11 +24,13 @@ test if necessary. Organization restrictions can also block local imports.
 Connect/authenticate Launa. The browser must open https://launa.io, not staging.
 Use the normal login and MFA/passkey if configured. Review client, return address,
 permissions and environment. Deny once: Cursor must remain unauthenticated.
-Start a fresh connection and approve **Sandbox**.
+Start a fresh connection and approve **Sandbox**, reviewing the new
+`sandbox:wallet` permission (the prepared Sandbox private key is returned to the
+AI client when its wallet tool is used). Reconnect older grants.
 
 Production Sandbox is distinct from staging, so the older staging smoke-test
 APIs need not appear here. No API key, wallet key or Node.js should be required.
-Expect 42 developer tools and no `launa_pay_url` or `launa_inspect_url`.
+Expect 43 developer tools and no `launa_pay_url` or `launa_inspect_url`.
 
 ## 3. Read-only smoke test
 
@@ -47,13 +49,17 @@ Only after confirming Sandbox, send:
 
 > In Sandbox only, create a disposable API named Cursor marketplace test with
 > a unique cursor-review slug and upstream https://postman-echo.com. Use my
-> existing sandbox payout address if available; otherwise stop and explain what is
-> missing. Add GET /get at 0.001 USDC using the supported exact scheme and sandbox
+> existing sandbox payout address if available; otherwise retrieve my prepared
+> wallet with launa_sandbox_wallet and use its public address. Do not echo its key. Add GET /get at 0.001 USDC using the supported exact scheme and sandbox
 > network. List the API and endpoint afterward. Do not make any payment.
 
-Do not invent a payout address. If none is configured, record the actionable
-validation error and configure the sandbox payout through the dashboard before
-retrying. Check the new API/route in the production dashboard's Sandbox.
+Do not invent a payout address. The prepared wallet tool should return the fork
+network, public address, and key to Cursor; the key must not be repeated in chat
+or written to files. Check the API/route in the production dashboard's Sandbox.
+
+Also ask to add a route without specifying its price: the agent must ask for the
+missing price and make no write until answered. It must not ask again for details
+already provided.
 
 > For only the test API we just created, update GET /get to 0.002 USDC, list its
 > endpoints and show its request statistics. Do not change any other API.
@@ -85,5 +91,4 @@ Never send keys, passwords, cookies or callback query strings.
 
 Separate account-isolation and Live-mode tests need distinct authorized
 accounts/grants; do not mark those passed from this single-account test.
-After acceptance, promote the reviewed plugin commit to main and submit the
-repository through Cursor's publisher form.
+After acceptance, submit the reviewed main commit through Cursor's publisher form.

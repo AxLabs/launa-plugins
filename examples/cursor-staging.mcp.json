@@ -15,7 +15,8 @@
           "settlements:read",
           "openapi:read",
           "billing:read",
-          "income:read"
+          "income:read",
+          "sandbox:wallet"
         ]
       }
     }

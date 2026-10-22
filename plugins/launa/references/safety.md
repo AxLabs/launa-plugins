@@ -5,8 +5,13 @@
 - Read supported networks and assets with `launa_supported_networks`.
 - Buyer requests target gateway hosts. Seller operations target the Launa
   control plane through MCP.
-- Never expose `LAUNA_API_KEY`, JWTs, passwords, webhook secrets, wallet private
-  keys, seed phrases, or signed payment payloads.
+- Never ask for secrets in chat or echo them into chat, logs, command arguments,
+  or committed files. `launa_sandbox_wallet` deliberately returns the prepared
+  fork-only private key to the AI with `sandbox:wallet` consent. This authorized
+  tool use is allowed; it does not grant payment, reset, or Live-wallet authority.
+- Ask for required information that neither the user nor authorized reads supply.
+  Do not guess pricing, resources, public contact details, or Live payout addresses.
+  Reuse existing answers and keep optional fields omitted unless needed.
 - Inspect before paying. Confirm URL, method, amount, asset, network, recipient,
   and scheme before one payment attempt.
 - Ask for explicit confirmation before deleting an API, endpoint, domain, or
