@@ -32,7 +32,7 @@ shipped. Browser consent is required for every new grant.
 For production testing, copy `plugins/launa/`, including hidden files, into
 `~/.cursor/plugins/local/launa/`. Back up an existing copy outside that directory
 first. Reload Cursor and follow the [production checklist](docs/cursor-production-test.md).
-Use the reviewed `staging` checkout until this candidate is promoted to `main`.
+Use the reviewed `main` release candidate for production testing.
 
 For staging-service testing, build a separate environment-specific copy:
 
@@ -43,11 +43,11 @@ python3 scripts/prepare-staging.py /tmp/launa-plugin-staging
 Load that directory in your client. For Cursor, copy its contents into
 `~/.cursor/plugins/local/launa/` and reload the plugin. The source generator
 changes every MCP manifest to staging together; Website remains `https://launa.io`.
-Use the `staging` branch if adding this repository as a marketplace for testing;
-the default branch may contain older packaging.
+Repository manifests target production on both release branches; use the generated
+staging copy when testing staging services.
 
-After this candidate is promoted to the public default branch, repository-based
-installation (separate from acceptance into a curated marketplace):
+Repository-based installation from the public default branch (separate from
+acceptance into a curated marketplace):
 
 ```bash
 claude plugin marketplace add AxLabs/launa-plugins
