@@ -2,7 +2,7 @@
   "name": "launa-plugins",
   "description": "AxLabs plugins for Launa / x402",
   "owner": {
-    "name": "AxLabs"
+    "name": "AxLabs GmbH"
   },
   "plugins": [
     {

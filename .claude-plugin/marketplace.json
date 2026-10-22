@@ -1,7 +1,7 @@
 {
   "name": "launa-plugins",
   "owner": {
-    "name": "AxLabs",
+    "name": "AxLabs GmbH",
     "url": "https://axlabs.com"
   },
   "metadata": {
@@ -14,7 +14,7 @@
       "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen Sandbox or Live environment.",
       "version": "0.1.3",
       "author": {
-        "name": "AxLabs",
+        "name": "AxLabs GmbH",
         "url": "https://axlabs.com"
       },
       "homepage": "https://launa.io",
