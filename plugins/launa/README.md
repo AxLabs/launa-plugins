@@ -8,7 +8,7 @@ control-plane tools.
 
 Authenticate Launa in your client's MCP settings. Your browser opens Launa's
 existing login, then a consent page showing permissions and the return address.
-Choose Test (default) or Live. Each grant is bound to that environment; reconnect
+Choose Sandbox (default) or Live. Each grant is bound to that environment; reconnect
 to change it. No API key or wallet credential needs to be entered into the plugin.
 
 Access expires after 30 days. Revoke the named `MCP: <client> (...)` key in the
@@ -17,7 +17,7 @@ connection from your AI tool as well.
 
 Production uses `https://mcp.launa.io/mcp` and sign-in on `https://launa.io`.
 Version 0.1.2 is a marketplace release candidate; native production acceptance
-and store submission are pending. Test mode on production is separate from the
+and store submission are pending. Sandbox on production is separate from the
 staging service. See the [Cursor test checklist](https://github.com/AxLabs/launa-plugins/blob/staging/docs/cursor-production-test.md).
 
 Clients without OAuth can use a scoped API key on the same hosted endpoint;
@@ -40,7 +40,7 @@ OAuth. Never paste keys into a conversation or commit them to configuration.
 
 ## Workflows
 
-Setup, API wrapping, endpoint pricing, discovery, domains, CORS, Test mode, and
+Setup, API wrapping, endpoint pricing, discovery, domains, CORS, Sandbox, and
 analytics. Commands: `/wrap`, `/price`, `/discover`, `/domain`, `/cors`.
 The hosted developer connection does not expose buyer inspection/payment tools.
 The separate local server remains available for explicit API-key automation.

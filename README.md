@@ -5,7 +5,7 @@ domains, discovery, analytics, and settlements from your AI tool.
 
 All four client formats use the hosted MCP with **OAuth browser sign-in**.
 No API key, local Node.js runtime, or wallet is needed. Review permissions and
-choose Test or Live mode before granting access. The hosted server exposes the
+choose Sandbox or Live before granting access. The hosted server exposes the
 same 42 control-plane tools as the local server.
 
 **Marketplace release candidate 0.1.2:** production MCP is deployed at
@@ -62,7 +62,7 @@ Cursor and OpenAI directory submission instructions are in [SUBMIT.md](SUBMIT.md
 ## Workflows and access
 
 Eight skills cover setup, API wrapping, endpoint pricing, discovery, custom
-domains, CORS, Test mode, and analytics. Five commands provide `/wrap`, `/price`,
+domains, CORS, Sandbox, and analytics. Five commands provide `/wrap`, `/price`,
 `/discover`, `/domain`, and `/cors`.
 
 Access expires after 30 days. Revoke the named `MCP: <client> (...)` key in the

@@ -21,7 +21,7 @@ All plugin formats default to hosted OAuth. Cursor uses public client ID
 
 Other clients use restricted dynamic registration: reviewed web callbacks or
 native loopback callbacks. No client secret is shipped. Consent binds each grant
-to Test or Live. Production Test mode uses the production account's test
+to Sandbox or Live. Production Sandbox uses the production account's sandbox
 resources, not the staging account/database.
 
 Hosted MCP exposes 42 developer control-plane tools. Permissions include API,

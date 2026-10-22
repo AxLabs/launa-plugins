@@ -24,9 +24,9 @@ test if necessary. Organization restrictions can also block local imports.
 Connect/authenticate Launa. The browser must open https://launa.io, not staging.
 Use the normal login and MFA/passkey if configured. Review client, return address,
 permissions and environment. Deny once: Cursor must remain unauthenticated.
-Start a fresh connection and approve **Test mode**.
+Start a fresh connection and approve **Sandbox**.
 
-Production Test mode is distinct from staging, so the older staging smoke-test
+Production Sandbox is distinct from staging, so the older staging smoke-test
 APIs need not appear here. No API key, wallet key or Node.js should be required.
 Expect 42 developer tools and no `launa_pay_url` or `launa_inspect_url`.
 
@@ -37,23 +37,23 @@ In a fresh chat:
 > Use only the Launa plugin connection. List my APIs and supported networks.
 > If an API exists, show its endpoints and prices. Do not create or change anything.
 
-Compare with Test mode in the production dashboard. Empty results are valid for
-an empty test account. No Live-mode or another account's private resources should
+Compare with Sandbox in the production dashboard. Empty results are valid for
+an empty Sandbox environment. No Live-mode or another account's private resources should
 appear. Check that tool output contains no credentials.
 
 ## 4. Disposable API
 
-Only after confirming Test mode, send:
+Only after confirming Sandbox, send:
 
-> In Test mode only, create a disposable API named Cursor marketplace test with
+> In Sandbox only, create a disposable API named Cursor marketplace test with
 > a unique cursor-review slug and upstream https://postman-echo.com. Use my
-> existing test payout address if available; otherwise stop and explain what is
-> missing. Add GET /get at 0.001 USDC using the supported exact scheme and test
+> existing sandbox payout address if available; otherwise stop and explain what is
+> missing. Add GET /get at 0.001 USDC using the supported exact scheme and sandbox
 > network. List the API and endpoint afterward. Do not make any payment.
 
 Do not invent a payout address. If none is configured, record the actionable
-validation error and configure the test payout through the dashboard before
-retrying. Check the new API/route in the production dashboard's Test mode.
+validation error and configure the sandbox payout through the dashboard before
+retrying. Check the new API/route in the production dashboard's Sandbox.
 
 > For only the test API we just created, update GET /get to 0.002 USDC, list its
 > endpoints and show its request statistics. Do not change any other API.
@@ -71,10 +71,10 @@ pre-existing resources.
 Reload Cursor and list APIs again. The connection should work or clearly request
 authentication. A quick reload is not proof of refresh-token expiry/rotation.
 
-In the production dashboard's **Test mode**, revoke only the
+In the production dashboard's **Sandbox**, revoke only the
 `MCP: <client> (...)` API key created for this test. Ask Cursor to list APIs
 again: the backend operation must fail rather than present cached data as a new
-success. Disconnect/re-authenticate, approve Test mode and confirm access returns.
+success. Disconnect/re-authenticate, approve Sandbox and confirm access returns.
 Remove the test connection/key afterward if no longer needed.
 
 ## Results

@@ -1,14 +1,14 @@
 ---
 name: sandbox
 description: >
-  Use Launa Sandbox / Test mode for APIs and x402 payments without real funds.
+  Use Launa Sandbox for APIs and x402 payments without real funds.
   Use when the user mentions launa_sandbox keys, development mode, the Anvil
   fork, test payments, or the Sandbox wallet.
 ---
 
 # Sandbox
 
-For the hosted connection, select **Test mode** during OAuth consent.
+For the hosted connection, select **Sandbox** during OAuth consent.
 The grant fixes its environment; reconnect to change it. Environment variables
 and local wallet configuration do not change a hosted connection. Do not set up
 a wallet for developer control-plane operations.
@@ -32,4 +32,4 @@ into mutations.
 
 Sandbox endpoint defaults support `exact` only, not `batch-settlement`.
 
-Fork state is ephemeral. Do not treat Test mode as production state.
+Fork state is ephemeral. Do not treat Sandbox as production state.

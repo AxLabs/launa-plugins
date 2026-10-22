@@ -1,7 +1,7 @@
 {
   "name": "launa",
   "version": "0.1.2",
-  "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen test or live environment.",
+  "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen Sandbox or Live environment.",
   "author": {
     "name": "AxLabs",
     "url": "https://axlabs.com"
@@ -18,7 +18,7 @@
   "interface": {
     "displayName": "Launa",
     "shortDescription": "Your APIs, in your AI tools",
-    "longDescription": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen test or live environment. Connect with browser OAuth; no API key to paste. Review permissions before granting access.",
+    "longDescription": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen Sandbox or Live environment. Connect with browser OAuth; no API key to paste. Review permissions before granting access.",
     "developerName": "AxLabs",
     "category": "Productivity",
     "capabilities": [

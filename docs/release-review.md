@@ -15,7 +15,7 @@ marketplace submission pending. These are proposed cases, not completed tests.
 
 Connect Launa to Cursor to manage APIs, endpoint pricing, domains, discovery,
 analytics and settlements. Sign in through your browser, review permissions,
-and choose Test or Live mode. The hosted developer plugin includes 42
+and choose Sandbox or Live. The hosted developer plugin includes 42
 control-plane tools, eight skills and five commands. No local Node.js runtime
 or wallet is needed for the connection.
 
@@ -26,14 +26,14 @@ webhooks. Do not describe these permissions as read-only access.
 
 ## Reviewer access and evidence
 
-Use a dedicated reviewer account with Test-mode fixtures. Supply access details
+Use a dedicated reviewer account with Sandbox fixtures. Supply access details
 only through a private reviewer channel if requested; never commit them or put
 them in a demo. Reviewers need no wallet credentials or mainnet funds. Disclose
 service-account requirements and applicable service charges accurately.
 
 Record release commit, Cursor version, plugin version, test date and results
 from [production acceptance](cursor-production-test.md). A sanitized demo should
-show installation, logo/links, browser consent, Test-mode inventory, disposable
+show installation, logo/links, browser consent, Sandbox inventory, disposable
 API creation/update/deletion and revocation/reconnect. Exclude login entry,
 cookies, API keys, OAuth callback parameters and private customer data.
 
@@ -42,8 +42,8 @@ cookies, API keys, OAuth callback parameters and private customer data.
 | Case | Expected outcome |
 | --- | --- |
 | Deny consent | No authenticated control-plane access. |
-| Approve Test mode | Only the account's Test-mode configuration is visible. |
-| List APIs/endpoints | Matches the Test dashboard, without mutation or credential disclosure. |
+| Approve Sandbox | Only the account's Sandbox configuration is visible. |
+| List APIs/endpoints | Matches the Sandbox dashboard, without mutation or credential disclosure. |
 | Create without a required payout address | Actionable validation error; no partial API creation. |
 | Create/update/delete a disposable API | Only explicitly selected test resources change. |
 | Reload Cursor | Connection works or clearly requests authentication. |

@@ -1,7 +1,7 @@
 {
   "name": "launa",
   "version": "0.1.2",
-  "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen test or live environment.",
+  "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen Sandbox or Live environment.",
   "homepage": "https://launa.io",
   "repository": "https://github.com/AxLabs/launa-plugins",
   "license": "Apache-2.0",

@@ -1,7 +1,7 @@
 ---
 name: setup
 description: >
-  Connect the Launa developer plugin with hosted OAuth, choose Test or Live mode,
+  Connect the Launa developer plugin with hosted OAuth, choose Sandbox or Live,
   and troubleshoot authorization or connection failures.
 ---
 
@@ -9,12 +9,12 @@ description: >
 
 All plugin formats use hosted MCP at `https://mcp.launa.io/mcp`. Staging packages
 use `https://mcp.staging.launa.io/mcp` and sign in at `https://staging.launa.io`.
-The source production endpoint requires deployment before distribution.
+The production endpoint is deployed; marketplace submission is separate.
 
 1. Start authentication in the client's MCP settings: Cursor Tools & MCP,
    Claude Code `/mcp`, Grok Build `/mcps` then `i`, or the Codex plugin connection UI.
 2. Sign in to Launa in the browser. Never ask for passwords or tokens in chat.
-3. Review permissions and the return address. Choose Test mode unless the user
+3. Review permissions and the return address. Choose Sandbox unless the user
    explicitly wants Live operations. Approve only a connection the user initiated.
 4. Call `launa_list_apis` to check the connection.
 

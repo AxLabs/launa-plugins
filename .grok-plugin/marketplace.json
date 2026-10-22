@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "launa",
-      "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen test or live environment.",
+      "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen Sandbox or Live environment.",
       "category": "development",
       "source": {
         "type": "local",
