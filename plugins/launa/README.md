@@ -15,9 +15,14 @@ Access expires after 30 days. Revoke the named `MCP: <client> (...)` key in the
 corresponding environment's API key settings to stop backend access. Remove the
 connection from your AI tool as well.
 
-Source targets `https://mcp.launa.io/mcp`; production rollout and marketplace
-submission are pending. Use the repository's staging package generator for
-`https://mcp.staging.launa.io/mcp`. See [rollout](https://github.com/AxLabs/launa-plugins/blob/staging/docs/hosted-mcp.md).
+Production uses `https://mcp.launa.io/mcp` and sign-in on `https://launa.io`.
+Version 0.1.2 is a marketplace release candidate; native production acceptance
+and store submission are pending. Test mode on production is separate from the
+staging service. See the [Cursor test checklist](https://github.com/AxLabs/launa-plugins/blob/staging/docs/cursor-production-test.md).
+
+Clients without OAuth can use a scoped API key on the same hosted endpoint;
+see [API-key setup](https://launa.io/ai#other-clients). The default plugin uses
+OAuth. Never paste keys into a conversation or commit them to configuration.
 
 ## Data flow
 

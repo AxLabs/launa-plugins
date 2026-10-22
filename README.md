@@ -8,10 +8,12 @@ No API key, local Node.js runtime, or wallet is needed. Review permissions and
 choose Test or Live mode before granting access. The hosted server exposes the
 same 42 control-plane tools as the local server.
 
-**Unreleased:** production source targets `https://mcp.launa.io/mcp`. Staging is
-available at `https://mcp.staging.launa.io/mcp`; production deployment and native
-client acceptance checks are still release gates. Nothing has been published to
-marketplaces. See [hosted rollout](docs/hosted-mcp.md) and [submission](SUBMIT.md).
+**Marketplace release candidate 0.1.2:** production MCP is deployed at
+`https://mcp.launa.io/mcp`, with sign-in and consent on `https://launa.io`.
+Native production client acceptance and marketplace review remain pending.
+Nothing has been submitted to marketplaces. Start with the
+[Cursor production test](docs/cursor-production-test.md), then follow
+[submission](SUBMIT.md).
 
 ## Install from source
 
@@ -27,7 +29,12 @@ registration endpoint. The portable OpenAI manifest explicitly declares OAuth
 with dynamic client registration. Client IDs are public; no client secret is
 shipped. Browser consent is required for every new grant.
 
-For local testing, build an environment-specific copy outside the repository:
+For production testing, copy `plugins/launa/`, including hidden files, into
+`~/.cursor/plugins/local/launa/`. Back up an existing copy outside that directory
+first. Reload Cursor and follow the [production checklist](docs/cursor-production-test.md).
+Use the reviewed `staging` checkout until this candidate is promoted to `main`.
+
+For staging-service testing, build a separate environment-specific copy:
 
 ```bash
 python3 scripts/prepare-staging.py /tmp/launa-plugin-staging
@@ -39,7 +46,8 @@ changes every MCP manifest to staging together; Website remains `https://launa.i
 Use the `staging` branch if adding this repository as a marketplace for testing;
 the default branch may contain older packaging.
 
-Once production is deployed and release authorized, marketplace installation:
+After this candidate is promoted to the public default branch, repository-based
+installation (separate from acceptance into a curated marketplace):
 
 ```bash
 claude plugin marketplace add AxLabs/launa-plugins
