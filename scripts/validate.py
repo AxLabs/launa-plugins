@@ -5,10 +5,11 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
+from client_bundles import check_bundles
 
 ROOT = Path(__file__).resolve().parents[1]
 PLUGIN = ROOT / "plugins" / "launa"
-PLUGIN_VERSION = "0.1.3"
+PLUGIN_VERSION = "0.1.4"
 MCP_URL = "https://mcp.launa.io/mcp"
 MCP_CONFIGS = {
     ROOT / ".mcp.json",
@@ -20,6 +21,7 @@ MCP_CONFIGS = {
 REQUIRED = [
     ROOT / ".cursor-plugin" / "marketplace.json",
     ROOT / ".claude-plugin" / "marketplace.json",
+    ROOT / ".github" / "plugin" / "marketplace.json",
     ROOT / ".grok-plugin" / "marketplace.json",
     ROOT / ".agents" / "plugins" / "marketplace.json",
     ROOT / ".mcp.json",
@@ -58,7 +60,7 @@ def manifest_errors(path: Path, data: dict) -> list[str]:
             errors.append("MCP must use hosted Streamable HTTP")
         if any(key in server for key in ("command", "args", "env", "headers")):
             errors.append("Hosted MCP must not ship local launch settings or credentials")
-    if path.parent.name in {".cursor-plugin", ".claude-plugin"} and path.name == "marketplace.json":
+    if path.parent.name in {".cursor-plugin", ".claude-plugin", "plugin"} and path.name == "marketplace.json":
         entries = data.get("plugins", [])
         if not entries or any(entry.get("version") != PLUGIN_VERSION for entry in entries):
             errors.append(f"marketplace plugin versions must be {PLUGIN_VERSION}")
@@ -176,6 +178,10 @@ def main() -> int:
         print(f"{errors} error(s)", file=sys.stderr)
         return 1
     errors += validate_listing() + validate_oauth_config()
+    bundle_errors = check_bundles()
+    for message in bundle_errors:
+        print(message, file=sys.stderr)
+    errors += len(bundle_errors)
     if errors:
         print(f"{errors} listing/configuration error(s)", file=sys.stderr)
         return 1

@@ -1,4 +1,4 @@
-# Launa 0.1.3 reviewer preparation
+# Launa 0.1.4 reviewer preparation
 
 Status: production service deployed; native Cursor production acceptance and
 marketplace submission pending. These are proposed cases, not completed tests.

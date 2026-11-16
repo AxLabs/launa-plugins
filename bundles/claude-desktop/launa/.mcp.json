@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "launa": {
+      "type": "http",
+      "url": "https://mcp.launa.io/mcp"
+    }
+  }
+}

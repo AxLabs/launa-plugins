@@ -1,0 +1,20 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "launa",
+  "version": "0.1.4",
+  "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen Sandbox or Live environment.",
+  "author": {
+    "name": "AxLabs GmbH",
+    "url": "https://axlabs.com"
+  },
+  "homepage": "https://launa.io",
+  "repository": "https://github.com/AxLabs/launa-plugins",
+  "license": "Apache-2.0",
+  "keywords": [
+    "launa",
+    "x402",
+    "payments",
+    "mcp",
+    "api"
+  ]
+}

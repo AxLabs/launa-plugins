@@ -1,0 +1,15 @@
+{
+  "name": "launa-plugins",
+  "owner": {"name": "AxLabs GmbH"},
+  "metadata": {"description": "Launa developer workflows by AxLabs"},
+  "plugins": [
+    {
+      "name": "launa",
+      "source": "./bundles/copilot/launa",
+      "version": "0.1.4",
+      "description": "Manage Launa APIs, pricing, domains, discovery, analytics and settlements through hosted MCP.",
+      "author": {"name": "AxLabs GmbH", "url": "https://axlabs.com"},
+      "homepage": "https://launa.io"
+    }
+  ]
+}

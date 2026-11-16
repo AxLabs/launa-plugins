@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "launa": {
+      "type": "streamable-http",
+      "url": "https://mcp.launa.io/mcp"
+    }
+  }
+}

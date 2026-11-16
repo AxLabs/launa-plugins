@@ -1,6 +1,6 @@
 # Marketplace publication
 
-Release candidate: **Launa 0.1.3**. Production hosted MCP and consent are deployed.
+Release candidate: **Launa 0.1.4**. Production hosted MCP and consent are deployed.
 The public repository is Apache-2.0 licensed. Native production acceptance and
 marketplace submission remain pending. The release candidate is promoted from
 staging to main for production testing; a main-branch push is not a store release.
@@ -10,7 +10,7 @@ staging to main for production testing; a main-branch push is not a store releas
 1. Run `python3 scripts/validate.py` and complete the
    [native production test](docs/cursor-production-test.md).
 2. Review the tested main candidate and record its full public commit SHA.
-   Confirm version 0.1.3 and the production MCP URL.
+   Confirm version 0.1.4 and the production MCP URL.
 3. Use the [reviewer pack](docs/release-review.md) for listing text, support,
    privacy and terms links, and sanitized test evidence. Prepare private
    reviewer access if requested; do not commit credentials.
@@ -32,7 +32,8 @@ Official requirements checked 2026-10-22:
 
 ## Other marketplaces
 
-Claude Code, Grok Build and Codex / ChatGPT formats remain in the repository,
+Claude Code, Grok Build, Codex / ChatGPT, Antigravity IDE/CLI, Claude Desktop and Copilot
+formats are available in the repository,
 but Cursor acceptance does not establish their native compatibility or listing.
 Each needs its own current submission requirements, native OAuth evidence and
 separate submission authorization.
@@ -42,3 +43,8 @@ Earlier multi-market research is preserved in
 Those notes describe superseded packaging and must not be used as current
 release instructions. The [hosted rollout](docs/hosted-mcp.md) describes the
 current authentication and tool surface.
+
+Generated bundles and native acceptance steps: [Antigravity](docs/antigravity.md)
+[Claude Desktop](docs/claude-desktop.md), and [Copilot](docs/copilot.md). Deploy the Antigravity OAuth callback
+change before its sign-in test. Run `python3 scripts/client_bundles.py` to create
+the uploadable ZIPs.

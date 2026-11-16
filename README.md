@@ -3,15 +3,15 @@
 Developer plugins for [Launa](https://launa.io): manage APIs, endpoint pricing,
 domains, discovery, analytics, and settlements from your AI tool.
 
-All four client formats use the hosted MCP with **OAuth browser sign-in**.
-No API key, local Node.js runtime, or wallet is needed. Review permissions and
-choose Sandbox or Live before granting access. The hosted server exposes the
+All client formats use the hosted MCP with **OAuth browser sign-in**.
+No API key, local Node.js runtime, or wallet is needed.
+Review permissions and choose Sandbox or Live before granting access. The hosted server exposes the
 43 developer tools, including prepared Sandbox wallet access.
 
-**Marketplace release candidate 0.1.3:** production MCP is deployed at
+**Marketplace release candidate 0.1.4:** production MCP is deployed at
 `https://mcp.launa.io/mcp`, with sign-in and consent on `https://launa.io`.
 Native production client acceptance and marketplace review remain pending.
-Nothing has been submitted to marketplaces. Start with the
+Store approval is tracked separately from this repository. Start with the
 [Cursor production test](docs/cursor-production-test.md), then follow
 [submission](SUBMIT.md).
 
@@ -23,6 +23,9 @@ Nothing has been submitted to marketplaces. Start with the
 | Claude Code | `.claude-plugin/plugin.json` | `/mcp` → authenticate Launa |
 | Grok Build | `.grok-plugin/plugin.json` + `.mcp.json` | `/mcps` → Launa → `i` |
 | Codex / ChatGPT desktop | `plugin.json` + `mcp.json`; `.codex-plugin/` fallback | Authenticate the plugin in the host |
+| Antigravity IDE + CLI | `bundles/antigravity/launa/` | MCP/Customizations → Authenticate |
+| GitHub Copilot (VS Code, CLI, app) | `bundles/copilot/launa/` | Authenticate Launa in the client |
+| Claude Desktop / Cowork | `bundles/claude-desktop/launa/` (upload ZIP) | Connect Launa in Customize |
 
 Cursor uses public client `launa-cursor`. The other clients discover the OAuth
 registration endpoint. The portable OpenAI manifest explicitly declares OAuth
@@ -59,6 +62,28 @@ grok plugin install launa --trust
 
 Cursor and OpenAI directory submission instructions are in [SUBMIT.md](SUBMIT.md).
 
+Antigravity IDE/CLI, Claude Desktop and Copilot bundles are generated from shared content:
+
+```bash
+python3 scripts/client_bundles.py
+python3 scripts/validate.py
+python3 -m unittest discover -s scripts -p 'test_*.py'
+```
+
+Install instructions and acceptance checks:
+[Antigravity IDE + CLI](docs/antigravity.md),
+[Claude Desktop / Cowork](docs/claude-desktop.md), and
+[GitHub Copilot](docs/copilot.md).
+ZIPs are written to `dist/`; production bundle sources are under `bundles/`.
+Use `--environment staging` to build isolated staging-service copies without
+changing production defaults. Edit `plugins/launa/` and regenerate; validation
+rejects missing, stale, or extra bundle files.
+
+Antigravity browser OAuth also requires the exact callback allowlist change in
+`launa-sdks` to be deployed. Claude Desktop plugin installation currently needs
+a paid Claude plan. Native installation and OAuth acceptance are still required;
+packaging validation is not an end-to-end client test.
+
 ## Workflows and access
 
 Eight skills cover setup, API wrapping, endpoint pricing, discovery, custom
@@ -90,6 +115,9 @@ python3 scripts/validate.py
 
 Checks all client formats, matching versions, hosted URLs, OAuth metadata, icons,
 required workflows, and absence of credential-based onboarding.
+
+Run client bundle regression checks with
+`python3 -m unittest discover -s scripts -p 'test_*.py'`.
 
 Apache-2.0. Server implementation: [AxLabs/launa-sdks](https://github.com/AxLabs/launa-sdks/tree/main/tools/mcp-server).
 

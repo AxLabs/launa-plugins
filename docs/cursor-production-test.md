@@ -1,4 +1,4 @@
-# Cursor production acceptance — 0.1.3
+# Cursor production acceptance — 0.1.4
 
 Status: awaiting native Cursor testing. Record Cursor version, plugin version,
 source commit, date and pass/fail for each step. Do not record credentials or
@@ -8,7 +8,7 @@ OAuth callback query strings. This checklist does not submit or publish anything
 
 Use a real copy of `plugins/launa/`, including hidden files, at
 `~/.cursor/plugins/local/launa/`. Back up the old copy outside that directory.
-The installed `.cursor-plugin/plugin.json` must show version `0.1.3` and
+The installed `.cursor-plugin/plugin.json` must show version `0.1.4` and
 `mcpServers.launa.url` equal to `https://mcp.launa.io/mcp`.
 
 Run **Developer: Reload Window** from Cursor's command palette. Open the plugin

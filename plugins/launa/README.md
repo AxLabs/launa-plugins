@@ -1,8 +1,8 @@
 # Launa developer plugin
 
 Connect your [Launa](https://launa.io) workspace to Cursor, Claude Code, Codex /
-ChatGPT desktop, or Grok Build. All formats use hosted OAuth with 43 developer
-control-plane tools.
+ChatGPT desktop, Grok Build, Antigravity IDE/CLI, Claude Desktop/Cowork, or GitHub
+Copilot. All formats use hosted OAuth with 43 developer control-plane tools.
 
 ## Connect
 
@@ -16,7 +16,7 @@ corresponding environment's API key settings to stop backend access. Remove the
 connection from your AI tool as well.
 
 Production uses `https://mcp.launa.io/mcp` and sign-in on `https://launa.io`.
-Version 0.1.3 is a marketplace release candidate; native production acceptance
+Version 0.1.4 is a marketplace release candidate; native production acceptance
 and store submission are pending. Sandbox on production is separate from the
 staging service. See the [Cursor test checklist](https://github.com/AxLabs/launa-plugins/blob/staging/docs/cursor-production-test.md).
 

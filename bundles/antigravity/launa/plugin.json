@@ -1,0 +1,27 @@
+{
+  "name": "launa",
+  "version": "0.1.4",
+  "description": "Sign in to Launa to manage APIs, endpoint pricing, domains, discovery, analytics, and settlements in your chosen Sandbox or Live environment.",
+  "author": {
+    "name": "AxLabs GmbH",
+    "url": "https://axlabs.com"
+  },
+  "homepage": "https://launa.io",
+  "repository": "https://github.com/AxLabs/launa-plugins",
+  "license": "Apache-2.0",
+  "keywords": [
+    "launa",
+    "x402",
+    "payments",
+    "mcp",
+    "api"
+  ],
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "displayName": "Launa",
+  "logo": "assets/icon.svg",
+  "suggestedPrompts": [
+    "List my Launa APIs and their priced endpoints.",
+    "Show my API usage and income for the last seven days.",
+    "Help me set up a Sandbox API. Ask for any required information I haven't provided."
+  ]
+}
