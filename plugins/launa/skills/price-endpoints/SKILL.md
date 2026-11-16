@@ -49,3 +49,25 @@ Show method, path, price accepts, and endpoint id. Call
 
 Never hardcode chain IDs, token addresses, or decimals. Derive them from
 `launa_supported_networks` or existing endpoint accepts.
+
+## Card acceptance (requires the card-payments release)
+
+The published 0.0.7 MCP package does not yet contain these additions. Check the
+connected server's tool schemas before using them; do not guess unsupported
+arguments. A build with card support exposes `launa_stripe_connection` and
+`launa_card_payments`, and adds `card_payment` to endpoint create/update.
+
+For an authorized seller configuration, first verify their Stripe connection in
+the selected environment. Linking an existing Stripe account is performed in
+**Account → Card payments** in the seller dashboard; do not request their Stripe
+secret key. Accept cards only on permanent, side-effect-free GET endpoints.
+Use an explicit final USD price, e.g. `card_payment: {enabled:true,
+currency:"usd",amount_minor:"100"}` for $1.00. Minimum is 50 cents. Preserve
+existing `accepts` to offer both rails; use `accepts:[]` only when cards alone
+are intended. Omission preserves card pricing; null removes it.
+
+These operations configure receipt of buyer payments in the seller's account.
+They do not authorize a buyer payment. The hosted card buyer completes Stripe
+Checkout explicitly; existing `launa_pay_url` remains x402-only. Keep uncertain
+purchases on the same token and payment rail. MPP/OpenAI Wallet and commerce
+fulfillment are not supported by this release.

@@ -17,3 +17,13 @@ Local stdio additionally supports API-key authentication and basic buyer inspect
 Install the CLI with `npm install -g @launaio/cli@0.0.7`. Add `--json` for
 machine-readable output. Never pass secrets on the command line when an
 environment variable or secure prompt is available.
+
+## Upcoming card-payments release
+
+After upgrading to a build containing card support, MCP adds
+`launa_stripe_connection` (`payment_accounts:read`) and `launa_card_payments`
+(`payments:read`). CLI equivalents are `cards connection` and `cards list`.
+Endpoint create/update accepts `card_payment`; CLI uses `--card-payment` JSON.
+Linking Stripe remains an interactive seller-dashboard action. Existing grants
+must explicitly consent to the added read scopes. The current published 0.0.7
+launch configuration is unchanged; discover tool availability before use.
