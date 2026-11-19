@@ -50,9 +50,11 @@ Show method, path, price accepts, and endpoint id. Call
 Never hardcode chain IDs, token addresses, or decimals. Derive them from
 `launa_supported_networks` or existing endpoint accepts.
 
-## Card acceptance (requires the card-payments release)
+## Card acceptance (requires a card-capable deployment)
 
-The published 0.0.7 MCP package does not yet contain these additions. Check the
+Card support is implemented on the feature branch and tested on staging; the
+published 0.0.7 local runtime does not contain these additions. Read
+[card payment capabilities](../../references/card-payments.md) and check the
 connected server's tool schemas before using them; do not guess unsupported
 arguments. A build with card support exposes `launa_stripe_connection` and
 `launa_card_payments`, and adds `card_payment` to endpoint create/update.
@@ -69,5 +71,5 @@ are intended. Omission preserves card pricing; null removes it.
 These operations configure receipt of buyer payments in the seller's account.
 They do not authorize a buyer payment. The hosted card buyer completes Stripe
 Checkout explicitly; existing `launa_pay_url` remains x402-only. Keep uncertain
-purchases on the same token and payment rail. MPP/OpenAI Wallet and commerce
-fulfillment are not supported by this release.
+purchases on the same token and payment rail. MPP and card commerce fulfillment are not implemented. Browser Checkout is the
+documented route for ChatGPT Wallet, but actual Wallet compatibility is unverified.

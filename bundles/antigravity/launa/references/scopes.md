@@ -29,7 +29,7 @@ reset a wallet. The AI client receives the key; review that permission at consen
 Existing OAuth connections need to reconnect to grant it. API-key connections
 need an explicitly scoped Sandbox key. Do not silently widen an existing key.
 
-The upcoming card-payments release adds `payment_accounts:read` for Stripe
+Card-capable feature-branch builds add `payment_accounts:read` for Stripe
 connection readiness and `payments:read` for card history. Grant these explicitly
 when upgrading; old grants remain unchanged. `payment_accounts:write` is a
 recent-JWT dashboard operation, not a hosted MCP API-key capability.

@@ -2,7 +2,7 @@
 name: analytics
 description: >
   Analyze Launa traffic, settlements, batch activity, seller income, billing,
-  webhook deliveries, or payout-request status.
+  card payments, webhook deliveries, or payout-request status.
 ---
 
 # Analytics and operations
@@ -36,6 +36,16 @@ Facilitator event logs, billing invoices, and exchange-rate lookup are
 CLI-only in this plugin. Creating/cancelling payouts is not exposed by the
 published MCP server or CLI; only listing payout requests is available.
 Do not synthesize calls for unsupported operations.
+
+## Card income
+
+Read [card reporting semantics](../../references/card-payments.md#reporting) for
+card-enabled deployments. Discover `launa_card_payments` before calling it and
+check `payments:read`; its latest-100 list is not an all-time ledger. Compare
+`card_payments` aggregates from overview/API stats over the same period and
+environment. Card proceeds are in the seller's Stripe account, separate from
+on-chain settlements and Launa custodial payouts. Keep gross, refunds, disputes
+and deliveries distinct; do not count polling or cached retrieval as another sale.
 
 ## Launa operation rules
 

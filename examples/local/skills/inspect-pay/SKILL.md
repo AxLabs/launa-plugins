@@ -52,3 +52,15 @@ saw pay URL --confirm
 
 The gateway handles facilitator verification and settlement; do not configure
 or call a facilitator directly.
+
+## Card offers and MPP
+
+A card-capable inspect build also reports `cardPayment` terms independently of
+x402 accepts. Check runtime availability; the pinned 0.0.7 example may lack this
+feature. Report the USD amount and hosted Checkout path without calling it an
+x402 scheme. `launa_pay_url` remains x402-only. Use the browser checkout path or
+an implemented SDK card helper when the buyer explicitly chooses cards; retain
+the original purchase for recovery and never fall back to x402 after an uncertain
+card charge. MPP is planned, not an available Launa payment option. Actual ChatGPT
+Wallet acceptance is unverified. See the shared
+[card capability reference](../../../../plugins/launa/references/card-payments.md).

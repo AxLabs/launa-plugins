@@ -17,5 +17,8 @@
 - Ask for explicit confirmation before deleting an API, endpoint, domain, or
   CORS origin.
 - Do not automatically retry payment or destructive calls.
-- Sandbox uses `launa_sandbox_...` and development mode. Live keys move real value.
+- Sandbox uses `launa_sandbox_...` and development mode. Treat Live operations as
+  potentially moving real value. Stripe mode is separate: current Launa staging
+  uses Stripe sandbox for both Launa environments. Verify provider mode; this
+  does not make x402 Live payments simulated.
 - The gateway, not the buyer, selects and calls its facilitator.

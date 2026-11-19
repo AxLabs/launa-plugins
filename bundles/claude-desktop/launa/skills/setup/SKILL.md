@@ -42,6 +42,14 @@ The `sandbox:wallet` permission explicitly allows the AI to retrieve the prepare
 Sandbox wallet private key for fork-only testing. It is unavailable in Live.
 Reconnect older grants to add this permission; do not ask users to paste keys.
 
+## Seller card acceptance
+
+For card setup, read [card payment capabilities](../../references/card-payments.md).
+Linking the seller's Stripe account is separate from connecting the developer MCP
+plugin or paying Launa's plan. Verify card-tool availability and the selected Launa
+environment; current staging uses Stripe sandbox for both Live and Sandbox while
+keeping their connections isolated. Do not infer Stripe live mode from a Live key.
+
 ## Launa operation rules
 
 Use Launa MCP tools for control-plane operations. Do not invent x402 headers,

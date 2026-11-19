@@ -15,7 +15,7 @@ Use Launa MCP tools. Do not construct control-plane HTTP requests manually.
 Collect:
 
 - `name`, lowercase `slug`, and HTTPS `upstream_base_url`
-- payout recipient when the account uses `user_wallet`
+- crypto payout recipient when configuring x402 with `user_wallet`
 - optional webhook and discovery fields only when requested
 
 Ask for missing required inputs before creating anything; reuse supplied answers
@@ -36,6 +36,15 @@ Then:
 `pay_to_addresses` is a CAIP-2 network-to-recipient map. Obtain supported
 networks from `launa_supported_networks`; never invent chain IDs, assets, or
 addresses.
+
+## Card-only or mixed payment APIs
+
+Read [card payment capabilities](../../references/card-payments.md) and the
+[endpoint pricing skill](../price-endpoints/SKILL.md) when cards are requested.
+Use the seller's ready Stripe connection in the selected environment and a
+card-capable tool schema. Card-only endpoints do not require an invented crypto
+payout recipient; mixed endpoints retain their x402 recipients and accepts.
+Cards currently support permanent read-only GET endpoints. MPP is planned.
 
 ## Update
 
