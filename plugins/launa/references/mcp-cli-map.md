@@ -29,5 +29,5 @@ must explicitly consent to the added read scopes. The current published 0.0.7
 launch configuration is unchanged; discover tool availability before use.
 
 See [card capabilities](card-payments.md) for implemented browser behavior,
-reporting semantics and staging mode selection. MPP is planned; these seller
+reporting semantics and staging mode selection. The MPP pilot is implemented on feat/mpp but not deployed; these seller
 tools do not consume SPTs or add card execution to `launa_pay_url`.

@@ -74,6 +74,13 @@ Checkout explicitly; existing `launa_pay_url` remains x402-only. Keep uncertain
 purchases on the same token and payment rail. MPP and card commerce fulfillment are not implemented. Browser Checkout is the
 documented route for ChatGPT Wallet, but actual Wallet compatibility is unverified.
 
+
+For MPP-capable feature builds, read [card capabilities](../../references/card-payments.md)
+before setting `card_payment.mpp`. Reuse the linked seller account, verify separate
+MPP readiness, and opt in only explicitly public read-only GET resources. Existing
+x402 accepts and hosted Checkout remain independent. Enabling acceptance does not
+authorize a buyer payment.
+
 ## Launa operation rules
 
 Use Launa MCP tools for control-plane operations. Do not invent x402 headers,
