@@ -52,7 +52,7 @@ Never hardcode chain IDs, token addresses, or decimals. Derive them from
 
 ## Card acceptance (requires a card-capable deployment)
 
-Card support is implemented on the feature branch and tested on staging; the
+Card support is merged and tested on staging; the
 published 0.0.7 local runtime does not contain these additions. Read
 [card payment capabilities](../../references/card-payments.md) and check the
 connected server's tool schemas before using them; do not guess unsupported
@@ -71,7 +71,7 @@ are intended. Omission preserves card pricing; null removes it.
 These operations configure receipt of buyer payments in the seller's account.
 They do not authorize a buyer payment. The hosted card buyer completes Stripe
 Checkout explicitly; existing `launa_pay_url` remains x402-only. Keep uncertain
-purchases on the same token and payment rail. MPP and card commerce fulfillment are not implemented. Browser Checkout is the
+purchases on the same token and payment rail. MPP is an opt-in public GET path; card commerce fulfillment is not implemented. Browser Checkout is the
 documented route for ChatGPT Wallet, but actual Wallet compatibility is unverified.
 
 
@@ -80,3 +80,11 @@ before setting `card_payment.mpp`. Reuse the linked seller account, verify separ
 MPP readiness, and opt in only explicitly public read-only GET resources. Existing
 x402 accepts and hosted Checkout remain independent. Enabling acceptance does not
 authorize a buyer payment.
+
+
+MPP authentication recovery requires the `feat/mpp-3ds` backend and gateway build.
+A 402 `payment_requires_action` means the buyer's token issuer must complete 3DS;
+keep the original credential and exact request. Do not create a replacement token
+or switch to Checkout/x402 until the original outcome is resolved. The local SDK
+card lab supports sandbox fixtures and redacted debugging; issuer-backed 3DS needs
+a separate sandbox issuer business profile. Seller linking is not buyer wallet setup.
